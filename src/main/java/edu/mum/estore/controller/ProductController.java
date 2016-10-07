@@ -10,17 +10,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.mum.estore.domain.Product;
 import edu.mum.estore.service.ProductService;
 
 @RestController
 public class ProductController {
 	private static final String DEFULT_STATUS="NOT FOUND";
-	public void addProduct() {
-
-	}
-
 	@Autowired
 	ProductService productService;
+	
+	
+	@ResponseBody
+	@ResponseStatus(value = HttpStatus.OK)
+	@RequestMapping(value = "/product/api/addproduct/{product}", method = RequestMethod.POST)
+	public void addProduct(@PathVariable("product") Product product) {
+			productService.addProduct(product);
+	}
+
+	
 	@ResponseBody
 	@ResponseStatus(value = HttpStatus.OK)
 	@RequestMapping(value = "/product/api/productid/{productid}", method = RequestMethod.GET)
