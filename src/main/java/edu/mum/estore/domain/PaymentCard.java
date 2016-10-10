@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 
 @Entity
@@ -91,5 +92,13 @@ public class PaymentCard {
 		private float availableCredit;
 		
 		private boolean status;
-	
+	    @ManyToOne
+	    Customer customer;
+		public Customer getCustomer() {
+			return customer;
+		}
+
+		public void setCustomer(Customer customer) {
+			this.customer = customer;
+		}
 }
