@@ -3,6 +3,7 @@ package edu.mum.estore.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -25,8 +26,16 @@ public class Product {
 	@JsonIgnore
 	@Transient
 	private MultipartFile productImage;
+	@OneToOne
+	@Column(name="CAT_ID")
+	private Category category;
 	
-	
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 	public MultipartFile getProductImage() {
 		return productImage;
 	}
