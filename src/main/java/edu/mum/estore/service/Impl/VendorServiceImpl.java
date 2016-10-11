@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import edu.mum.estore.domain.RequestedCard;
+import edu.mum.estore.domain.ResponseInfo;
 import edu.mum.estore.domain.Vendor;
 import edu.mum.estore.rest.RemoteApi;
 import edu.mum.estore.service.VendorService;
@@ -48,7 +49,7 @@ public class VendorServiceImpl implements VendorService {
 	}
 	
 	private static final String rocUrl = "http://localhost:8080/eroc/api/numbers/{vendor_id}";
-	private static final String paymentUrl = "http://localhost:8080/epayment/afterplaceholder";
+	private static final String paymentUrl = "http://localhost:8080/epayment/afterplaceorder";
 
 	private boolean checkROC(Vendor vendor) {
 		RestTemplate restTemplate = remoteApi.getRestTemplate();
@@ -65,9 +66,8 @@ public class VendorServiceImpl implements VendorService {
 	private boolean verifyPayment(Vendor vendor) {
 		RestTemplate restTemplate = remoteApi.getRestTemplate();
 		HttpEntity<RequestedCard> httpEntity = new HttpEntity<RequestedCard>(vendor.getRequestedCard(), remoteApi.getHttpHeaders());
-		ResponseEntity<String> response = restTemplate.exchange(paymentUrl, HttpMethod.GET, httpEntity, String.class);
-		
-		if(response!=null && response.getBody().equalsIgnoreCase("YES"))
+		ResponseEntity<ResponseInfo> response = restTemplate.exchange(paymentUrl, HttpMethod.POST, httpEntity, ResponseInfo.class);
+		if(response!=null && response.getBody().getResponse()=='Y')
 			return true;
 		else 
 			return false;

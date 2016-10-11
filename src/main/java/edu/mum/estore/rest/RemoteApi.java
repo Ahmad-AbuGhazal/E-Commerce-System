@@ -22,6 +22,8 @@ public class RemoteApi {
 	}
 	
 	public RestTemplate getRestTemplate() {
+		restTemplate = new RestTemplate();
+		restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
 		return restTemplate;
 	}
 
