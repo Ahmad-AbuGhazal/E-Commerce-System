@@ -22,7 +22,7 @@ public class ProductController {
 	
 	@ResponseBody
 	@ResponseStatus(value = HttpStatus.OK)
-	@RequestMapping(value = "/product/api/addproduct/{product}", method = RequestMethod.POST)
+	@RequestMapping(value = "/product/addproduct/{product}", method = RequestMethod.POST)
 	public void addProduct(@PathVariable("product") Product product) {
 			productService.addProduct(product);
 	}

@@ -3,6 +3,9 @@ package edu.mum.estore.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -26,7 +29,26 @@ public class Product {
 	@Transient
 	private MultipartFile productImage;
 	
+	@ManyToOne
+	private Vendor vendor;
 	
+	
+	
+	public Vendor getVendor() {
+		return vendor;
+	}
+	public void setVendor(Vendor vendor) {
+		this.vendor = vendor;
+	}
+	@OneToOne
+	private Category category;
+	
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 	public MultipartFile getProductImage() {
 		return productImage;
 	}
