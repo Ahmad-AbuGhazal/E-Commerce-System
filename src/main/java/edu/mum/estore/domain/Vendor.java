@@ -1,4 +1,4 @@
-package edu.mum.estore.domain;
+ 	package edu.mum.estore.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  * 
@@ -15,6 +16,7 @@ import javax.persistence.OneToOne;
  */
 
 @Entity
+@Table(name="VENDOR")
 public class Vendor {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -32,6 +34,9 @@ public class Vendor {
 	
 	@OneToOne
 	private Address address;
+	
+	@OneToOne
+	private RequestedCard requestedCard;
 	
 	public Vendor() {}
 
@@ -73,5 +78,20 @@ public class Vendor {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public RequestedCard getRequestedCard() {
+		return requestedCard;
+	}
+
+	public void setRequestedCard(RequestedCard requestedCard) {
+		this.requestedCard = requestedCard;
+	}
+
+	public String getAsString() {
+		return "Vendor [vendor_sn=" + vendor_sn + ", vendor_id=" + vendor_id + ", vendor_name=" + vendor_name
+				+ ", owner_name=" + owner_name + ", address=" + address.toString() + ", requestedCard=" + requestedCard.toString() + "]";
 	}	
+	
+	
 }

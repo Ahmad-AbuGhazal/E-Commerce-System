@@ -12,6 +12,8 @@
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	<context:annotation-config />
 
+	<mvc:resources location="/resources/" mapping="/resources/**" />
+
 	<context:component-scan base-package="edu.mum.estore"></context:component-scan>
 
 	<mvc:annotation-driven enable-matrix-variables="true"

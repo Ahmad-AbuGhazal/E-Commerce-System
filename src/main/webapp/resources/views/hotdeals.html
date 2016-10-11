@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+        <div class="slides">
+            <img src="resources/images/example-slide-1.jpg" class="img-fluid" width="70%">
+            <img src="resources/images/example-slide-2.jpg" class="img-fluid" width="70%">
+            <img src="resources/images/example-slide-3.jpg" class="img-fluid" width="70%">
+        </div>
+    </div>
+</div>
+
+
+<div class="col-lg-3">
+    <div class="well">
+        <img src="resources/images/left-arrow.png" class="img-fluid" width="100%" />
+        <br /> Starting at $79.99 Limited time offer - Starting at $49.99 for Prime members only
+    </div>
+
+</div>
+
+<script>
+    jquery(document).ready(function () {
+        jquery('.slides').slick({
+            dots: true,
+            infinite: true,
+            speed: 500,
+            fade: true,
+            cssEase: 'linear',
+            autoplay: true,
+            center: true
+        });
+    });
+</script>

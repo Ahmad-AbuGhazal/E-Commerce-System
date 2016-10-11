@@ -1,0 +1,15 @@
+#slides {
+    display:none;
+}
+
+#slides .slidesjs-next {
+margin-right: 5px;		
+position: absolute;
+right: 0px;
+width: 42;
+height: 42;
+top: 42%;	
+background-image: url(../images/left-arrow.png);	
+z-index: 3000;
+text-indent: -9999px;
+}
