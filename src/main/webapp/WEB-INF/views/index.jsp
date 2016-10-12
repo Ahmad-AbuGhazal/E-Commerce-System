@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="resources/scripts/slick/slick-theme.css" />
 </head>
 
-<body ng-app="estore">
+<body data-ng-app="estore" ng-controller="indexCtrl">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -29,18 +29,52 @@
             <div style="height: 0.5em;"></div>
             <div class="col-lg-1"></div>
 
-            <div class="col-lg-6">
+            <div class="col-lg-7">
                 <div class="input-group">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default" dropdown-toggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Categories <span class="caret"></span></button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuCategories">
+                            <li><a href="#">Electronics</a></li>
+                            <li><a href="#">Flowers</a></li>
+                            <li><a href="#">Computers</a></li>
+                            <li><a href="#">Mobile phones</a></li>
+                        </ul>
+                    </div>
                     <input type="text" class="form-control" placeholder="Search...">
                     <span class="input-group-btn">
-                            <button type="button" class="btn btn-default">Search</button>
-                        </span>
+                            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
+                    </span>
                 </div>
             </div>
 
             <div class="collapse navbar-collapse" id="estore-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active">
+                    <li>
+                        <div class="col-lg-1">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Your Account <span class="caret"></span></button>
+
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-lg-8 col-lg-offset-3">
+                                                <button type="button" class="btn btn-default">Sign In</button>
+                                            </div>
+                                            <div class="col-lg-11 col-lg-offset-1">
+                                                <a href="#/vendor/register">Register New Account</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Hottest Deals</a></li>
+                                    <li><a href="#">View Orders</a></li>
+                                    <li><a href="#">Offers and Discounts</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </li>
+                    <li>
                         <div class="col-lg-2">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -49,34 +83,12 @@
                             </div>
                         </div>
                     </li>
-                    <li>
-                        <div class="col-lg-2">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</button>
-                            </div>
-                        </div>
-                    </li>
                 </ul>
             </div>
 
         </div>
-
-        <div style="padding:0.5em;margin-left:1.5em;">
-            <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories
-                    <span class="caret"></span></button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuCategories">
-                    <li><a href="#">Electronics</a></li>
-                    <li><a href="#">Flowers</a></li>
-                    <li><a href="#">Computers</a></li>
-                    <li><a href="#">Mobile phones</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
     <div ng-view></div>
-
 
 
     <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
@@ -89,6 +101,10 @@
     <script src="https://code.angularjs.org/1.5.8/angular-route.min.js"></script>
     <script src="https://code.angularjs.org/1.5.8/angular-resource.min.js"></script>
     <script src="resources/scripts/routehandler.js"></script>
+    
+    <script src="resources/scripts/indexController.js"></script>
+     <script src="resources/scripts/regService.js"></script>
+    <script src="resources/scripts/regCtrl.js"></script>
 </body>
 
 </html>

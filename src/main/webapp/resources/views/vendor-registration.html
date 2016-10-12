@@ -11,8 +11,7 @@
                 </ul>
 
                 <br>
-
-
+                
                 <div class="tab-content">
 
                     <div role="tabpanel" class="tab-pane active" id="general">
@@ -22,8 +21,10 @@
                                 Email:
                             </div>
                             <div class="col-lg-5">
-                                <input ng-modal="username" class="form-control">
+                                <input ng-model="regData.credDetails.email" class="form-control" required>
+                                
                             </div>
+                            
                             <div class="col-lg-3"></div>
                         </div>
                         <br>
@@ -33,7 +34,7 @@
                                 Password:
                             </div>
                             <div class="col-lg-5">
-                                <input ng-modal="password" class="form-control">
+                                <input type="password" ng-model="regData.credDetails.password1" class="form-control" required>
                             </div>
                             <div class="col-lg-3"></div>
                         </div>
@@ -44,7 +45,7 @@
                                 Confirm Password:
                             </div>
                             <div class="col-lg-5">
-                                <input ng-modal="confirmPassword" class="form-control">
+                                <input type="password" ng-model="regData.credDetails.password2" class="form-control" required>
                             </div>
                             <div class="col-lg-3"></div>
                         </div>
@@ -52,10 +53,10 @@
                         <div class="row">
                             <div class="col-lg-1"></div>
                             <div class="col-lg-2">
-                                Street:
+                                Street: 
                             </div>
                             <div class="col-lg-5">
-                                <input ng-modal="street" class="form-control">
+                                <input ng-model="regData.userDetails.street" class="form-control" required>
                             </div>
                         </div>
                         <br>
@@ -65,7 +66,7 @@
                                 City:
                             </div>
                             <div class="col-lg-5">
-                                <input ng-modal="city" class="form-control">
+                                <input ng-model="regData.userDetails.city" class="form-control" required>
                             </div>
                         </div>
                         <br>
@@ -75,7 +76,7 @@
                                 State:
                             </div>
                             <div class="col-lg-2">
-                                <input ng-modal="state" class="form-control">
+                                <input ng-model="regData.userDetails.state" class="form-control" required>
                             </div>
 
                             <div class="col-lg-1"></div>
@@ -83,7 +84,7 @@
                                 Zip:
                             </div>
                             <div class="col-lg-2">
-                                <input ng-modal="zip" class="form-control">
+                                <input ng-model="regData.userDetails.zipcode" class="form-control" required>
                             </div>
                             <div class="col-lg-1"></div>
                         </div>
@@ -91,7 +92,7 @@
 
                         <div class="row">
                             <div class="col-lg-2 col-lg-offset-10">
-                                <button type="button" class="btn btn-primary">Next <span class="glyphicon glyphicon-chevron-right"></span></button>
+                                <button type="button" class="btn btn-primary" ng-click="register()">Next <span class="glyphicon glyphicon-chevron-right"></span></button>
                             </div>
                         </div>
 
@@ -104,11 +105,12 @@
                             <div class="row">
                                 <div class="col-lg-1"></div>
                                 <div class="col-lg-2">
-                                    User Type:
+                                    User Type: {{regData.userDetails.userType}}
                                 </div>
                                 <div class="col-lg-5">
-                                    <input type="radio" name="usertype" value="Vendor" checked ng-modal="usertype"> Vendor
-                                    <input type="radio" name="usertype" value="Customer" ng-modal="usertype"> Customer
+                                    <input type="radio" name="usertype" value="Vendor" checked ng-model="regData.userDetails.userType"> Vendor
+                                    &nbsp;&nbsp;
+                                    <input type="radio" name="usertype" value="Customer" ng-model="regData.userDetails.userType"> Customer
                                 </div>
                             </div>
 
@@ -119,10 +121,21 @@
                                     <div class="row">
                                         <div class="col-lg-1"></div>
                                         <div class="col-lg-3">
-                                            Vendor Name:
+                                            Company Id:
                                         </div>
                                         <div class="col-lg-7">
-                                            <input ng-modal="vendor_name" class="form-control">
+                                            <input ng-model="regData.userDetails.vendorId" class="form-control" >
+                                        </div>
+                                        <div class="col-lg-1"></div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-lg-1"></div>
+                                        <div class="col-lg-3">
+                                            Company Name: 
+                                        </div>
+                                        <div class="col-lg-7">
+                                            <input ng-model="regData.userDetails.vendorName" class="form-control" >
                                         </div>
                                         <div class="col-lg-1"></div>
                                     </div>
@@ -133,7 +146,7 @@
                                             Owner Name:
                                         </div>
                                         <div class="col-lg-7">
-                                            <input ng-modal="owner_name" class="form-control">
+                                            <input ng-model="regData.userDetails.ownerName" class="form-control">
                                         </div>
                                         <div class="col-lg-1"></div>
                                     </div>
@@ -150,7 +163,7 @@
                                             Customer Name:
                                         </div>
                                         <div class="col-lg-6">
-                                            <input ng-modal="confirmPassword" class="form-control">
+                                            <input ng-model="confirmPassword" class="form-control">
                                         </div>
                                         <div class="col-lg-1"></div>
                                     </div>
@@ -171,8 +184,8 @@
                                     Card Type:
                                 </div>
                                 <div class="col-lg-5">
-                                    <input type="radio" name="usertype" value="Vendor" checked ng-modal="usertype"> MasterCard
-                                    <input type="radio" name="usertype" value="Customer" ng-modal="usertype"> VISA
+                                    <input type="radio" name="usertype" value="Vendor" checked ng-model="regData.cardDetails.cardType"> MasterCard  &nbsp;&nbsp;
+                                    <input type="radio" name="usertype" value="Customer" ng-model="regData.cardDetails.usertype"> VISA
                                 </div>
                             </div>
                             <br>
@@ -182,7 +195,7 @@
                                     Card Holder Name:
                                 </div>
                                 <div class="col-lg-5">
-                                    <input ng-modal="username" class="form-control">
+                                    <input ng-model="regData.cardDetails.cardHolder" class="form-control">
                                 </div>
                                 <div class="col-lg-3"></div>
                             </div>
@@ -193,7 +206,7 @@
                                     Credit Card Number:
                                 </div>
                                 <div class="col-lg-5">
-                                    <input ng-modal="username" class="form-control">
+                                    <input ng-model="regData.cardDetails.cardNum" class="form-control">
                                 </div>
                                 <div class="col-lg-3"></div>
                             </div>
@@ -204,7 +217,7 @@
                                     Security Code:
                                 </div>
                                 <div class="col-lg-2">
-                                    <input ng-modal="username" class="form-control">
+                                    <input ng-model="regData.cardDetails.securityCode" class="form-control">
                                 </div>
                                 <div class="col-lg-5"></div>
                             </div>
@@ -216,10 +229,10 @@
                                     Expiration Date:
                                 </div>
                                 <div class="col-lg-1">
-                                    <input ng-modal="month" class="form-control" placeholder="month">
+                                    <input ng-model="regData.cardDetails.month" class="form-control" placeholder="month">
                                 </div>
                                 <div class="col-lg-1">
-                                    <input ng-modal="year" class="form-control" placeholder="year">
+                                    <input ng-model="regData.cardDetails.year" class="form-control" placeholder="year">
                                 </div>
                                 <div class="col-lg-6"></div>
                             </div>
@@ -235,3 +248,5 @@
 
 
     </div>
+    
+    
