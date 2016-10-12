@@ -32,7 +32,7 @@ rapp.service('regService',['$http','$q','$location', function($http, $q, $locati
                     'zipcode':userDetails.zipcode
                 },
                 'requestedCard':{
-                    'cardType': cardDetails.cardType,
+                    'cardType': (cardDetails.cardType=="MasterCard")?'master':'visa',
                     'cardHolder': cardDetails.cardHolder,
                     'cardNum': cardDetails.cardNum,
                     'securityCode': cardDetails.securityCode,
@@ -47,7 +47,7 @@ rapp.service('regService',['$http','$q','$location', function($http, $q, $locati
     }
     
     function registerVendor(vendorDetails) {
-        var linkUrl = $location.host()+";"+$location.port+"/estore/vendor/add";
+        var linkUrl = "vendor/add/";
         var deferred = $q.defer();
         var req = $http({
             method : 'POST',

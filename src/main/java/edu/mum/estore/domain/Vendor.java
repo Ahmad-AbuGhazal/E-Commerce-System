@@ -1,5 +1,6 @@
  	package edu.mum.estore.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,10 +33,10 @@ public class Vendor {
 	@Column(name="OWNER_NAME")
 	private String owner_name;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	private Address address;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	private RequestedCard requestedCard;
 	
 	public Vendor() {}

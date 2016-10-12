@@ -2,25 +2,42 @@ package edu.mum.estore.domain;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Class for @RequestBody
  * @author Lin
  *
  */
 
+@Entity
 public class RequestedCard {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
 	
+	@Column(name="cardType")
 	private String cardType;
 	
+	@Column(name="cardHolder")
 	private String cardHolder;
 
+	@Column(name="cardNum")
 	private String cardNum;
 
+	@Column(name="securityCode")
 	private String securityCode;
 
+	@Column(name="expiration")
 	private Date expiration;
 
 	private float purchaseAmount;
+	
+	public RequestedCard() {}
 
 	public String getCardType() {
 		return cardType;
@@ -76,6 +93,4 @@ public class RequestedCard {
 				+ ", securityCode=" + securityCode + ", expiration=" + expiration + ", purchaseAmount=" + purchaseAmount
 				+ "]";
 	}
-	
-	
 }

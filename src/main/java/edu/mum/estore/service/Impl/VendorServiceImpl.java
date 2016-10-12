@@ -14,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import edu.mum.estore.domain.RequestedCard;
 import edu.mum.estore.domain.ResponseInfo;
 import edu.mum.estore.domain.Vendor;
+import edu.mum.estore.repository.VendorRepository;
 import edu.mum.estore.rest.RemoteApi;
 import edu.mum.estore.service.VendorService;
 
@@ -23,17 +24,26 @@ public class VendorServiceImpl implements VendorService {
 	
 	@Autowired
 	private RemoteApi remoteApi;
+	
+	@Autowired
+	private VendorRepository vendorRepository;
 
 	@Override
-	public String addVendor(Vendor vendor) {
+	public ResponseInfo addVendor(Vendor vendor) {
+		ResponseInfo responseInfo = new ResponseInfo();
 		if(checkROC(vendor) && verifyPayment(vendor)) {
-			RestTemplate restTemplate = remoteApi.getRestTemplate();
+			/*RestTemplate restTemplate = remoteApi.getRestTemplate();
 			HttpEntity<Vendor> httpEntity = new HttpEntity<Vendor>(vendor, remoteApi.getHttpHeaders());
 			ResponseEntity<Vendor> response = restTemplate.exchange("http://localhost:8080/estore/addVendor", HttpMethod.POST, httpEntity, 
-										Vendor.class);
-			return "YES";
+										Vendor.class);*/
+			
+			vendorRepository.addVendor(vendor);
+			
+			responseInfo.setResponse('Y');
+			return responseInfo;
 		}
-		return "NO";
+		responseInfo.setResponse('N');
+		return responseInfo;
 	}
 
 	@Override
