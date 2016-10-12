@@ -1,10 +1,15 @@
 package edu.mum.estore.service;
 
+import java.util.List;
+
 import edu.mum.estore.domain.Product;
 
 public interface ProductService {
 	
-	public void addProduct(Product product);
-	public String searchProduct(long productId);
-
+	 void addProduct(Product product);
+	 List<Product> searchProduct(String productName, String productCategory);
+     Product getProductByName(long vendorId,String productName);
+     Product get(long productId);
+     boolean isAvailable(Product product,long quantity);
+     Product update(Product product);
 }

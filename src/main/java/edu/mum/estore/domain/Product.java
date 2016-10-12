@@ -25,6 +25,20 @@ public class Product {
 	private double productPrice;
 	@Column(name="ProductQuantity")
 	private long productQuantity;
+	private long maxPerCustomer;
+	private long lockNumber;
+	public long getMaxPerCustomer() {
+		return maxPerCustomer;
+	}
+	public void setMaxPerCustomer(long maxPerCustomer) {
+		this.maxPerCustomer = maxPerCustomer;
+	}
+	public long getLockNumber() {
+		return lockNumber;
+	}
+	public void setLockNumber(long lockNumber) {
+		this.lockNumber = lockNumber;
+	}
 	@JsonIgnore
 	@Transient
 	private MultipartFile productImage;
