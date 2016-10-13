@@ -56,7 +56,7 @@ public class Customer{
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="customer")
 	List<Order> orders=new ArrayList<>();
 	
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="customer")
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="customer")
 	List<PaymentCard> paymentCards=new ArrayList<>();
 	public long getId() {
 		return id;

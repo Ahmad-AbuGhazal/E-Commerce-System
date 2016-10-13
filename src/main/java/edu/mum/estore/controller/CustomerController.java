@@ -28,7 +28,7 @@ PaymentCardService paymentCardService;
 
 
 @ResponseBody
-@RequestMapping(value="/customer/{id}")
+@RequestMapping(value="/customers/{id}")
 public Customer getProfile(@PathVariable("id") long id){
 	if(id<=0)
 	return null;
