@@ -1,5 +1,6 @@
 package edu.mum.estore.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,13 +23,15 @@ public class Product {
 	private long productQuantity;
 	private long maxPerCustomer;
 	private long lockNumber;
+	@Column(length=3000)
 	private String description;
-	private String imageLink;
-	public String getImageLink() {
-		return imageLink;
+	private String image_link;
+	
+	public String getImage_link() {
+		return image_link;
 	}
-	public void setImageLink(String imageLink) {
-		this.imageLink = imageLink;
+	public void setImage_link(String image_link) {
+		this.image_link = image_link;
 	}
 	public String getDescription() {
 		return description;
