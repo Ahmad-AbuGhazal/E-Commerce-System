@@ -26,8 +26,7 @@ public class ProductRepositoryImpl implements ProductRepository{
 	public List<Product> searchProduct(String productName, String productCategory) {
 		Query query = entityManager.createQuery(
 				"SELECT p from Product p WHERE p.productName LIKE :productName AND p.category.categoryName=:categoryName");
-		@SuppressWarnings("unchecked")
-		List<Product> products = (List<Product>) query.setParameter(productName, productName)
+		List<Product> products = (List<Product>) query.setParameter("productName",productName + "%" )
 				.setParameter("categoryName", productCategory).getResultList();
 		return products;
 
@@ -35,10 +34,16 @@ public class ProductRepositoryImpl implements ProductRepository{
 
 	@Override
 	public Product getProductByName(long vendorId, String productName) {
-		Query query = entityManager.createQuery(
-				"SELECT p from Product p WHERE p.productName=:productName AND p.vendor.vendor_id=:vendorId");
-		Product product=(Product) query.setParameter(productName, productName).setParameter("vendorId", vendorId).getSingleResult();
+		try{
+			Query query = entityManager.createQuery(
+				"SELECT p from Product p WHERE p.productName=:productName AND p.vendor.vendor_sn=:vendorId");
+		Product product=(Product) query.setParameter("productName", productName).setParameter("vendorId", vendorId).getSingleResult();
         return product;
+        
+		}
+		catch(Exception ex){
+			return null;
+		}
 	}
 
 	@Override

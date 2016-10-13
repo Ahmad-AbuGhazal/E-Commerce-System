@@ -1,13 +1,13 @@
 package edu.mum.estore.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,15 +28,34 @@ public class ProductController {
 
 	@ResponseBody
 	@ResponseStatus(value = HttpStatus.OK)
-	@RequestMapping(value = "/products", method = RequestMethod.GET)
+	@RequestMapping(value = "/products", method = RequestMethod.GET,consumes="application/json")
 	public List<Product> searchProduct(@RequestParam("productName") String productName,
 			@RequestParam("productCategory") String categoryName) {
 		return productService.searchProduct(productName, categoryName);
 
 	}
+	
+	@ResponseBody
+	@ResponseStatus(value = HttpStatus.OK)
+	@RequestMapping(value = "/products/{id}", method = RequestMethod.GET,consumes="application/json")
+	public Product searchProductById(@PathVariable("id") long productId) {
+		Product product=productService.get(productId);
+		return product;
+	}
+	
+	@ResponseBody
+	@ResponseStatus(value = HttpStatus.OK)
+	@RequestMapping(value = "/products/{id}/names", method = RequestMethod.GET,consumes="application/json")
+	public List<Product> searchSimillerProductById(@PathVariable("id") long productId) {
+		Product product=productService.get(productId);
+		List<Product> products=productService.searchProduct(product.getProductName(), product.getCategory().getCategoryName());
+		products=products.stream().limit(4).collect(Collectors.toList());
+		return products;
+	}
+	
 
 	@ResponseBody
-	@RequestMapping(value = "/products/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/products/add", method = RequestMethod.POST,consumes="application/json")
 	public ResponseInfo addProduct(@RequestBody @Valid Product product, BindingResult result) {
 
 		ResponseInfo info = new ResponseInfo();
@@ -51,8 +70,8 @@ public class ProductController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/vendors/{vendorId}/products/{productName}", method = RequestMethod.POST)
-	public ResponseInfo verifyProduct(@PathVariable("vendorId") long vendorId,@PathVariable("productName") String productName) {
+	@RequestMapping(value = "/vendors/{vendor_sn}/products/{productName}", method = RequestMethod.GET,consumes="application/json")
+	public ResponseInfo verifyProduct(@PathVariable("vendor_sn") long vendorId,@PathVariable("productName") String productName) {
 		ResponseInfo info = new ResponseInfo();
 		Product product = productService.getProductByName(vendorId,productName);
 		if (product == null) {

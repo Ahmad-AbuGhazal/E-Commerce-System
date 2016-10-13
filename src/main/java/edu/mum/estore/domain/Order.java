@@ -32,7 +32,7 @@ public class Order {
 	private Date orderDate;
 	private String status;
 
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="CUS_ID")
 	Customer customer;
 	

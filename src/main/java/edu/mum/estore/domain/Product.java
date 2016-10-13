@@ -1,12 +1,11 @@
 package edu.mum.estore.domain;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -16,13 +15,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Product {
 	@Id
-	@Column(name="ProductID")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long productId;
-	@Column(name="ProductName")
 	private String productName;
-	@Column(name="ProductPrice")
 	private double productPrice;
-	@Column(name="ProductQuantity")
 	private long productQuantity;
 	private long maxPerCustomer;
 	private long lockNumber;
