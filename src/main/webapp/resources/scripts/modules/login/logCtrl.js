@@ -1,4 +1,4 @@
-rapp.controller('logCtrl', ['$scope','$q', function($scope,$q) {
+rapp.controller('loginCtrl', ['$scope','$q', function($scope,$q) {
     $scope.loginData = {
     "username":'',
     "password":''

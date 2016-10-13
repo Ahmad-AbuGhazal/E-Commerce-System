@@ -2,17 +2,21 @@ var app = angular.module('estore', ['ngRoute', 'rapp', 'ngAnimate', 'ngSanitize'
 
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/', {
-            templateUrl: '../views/hotdeals.html'
-        }).when('/search', {
+            templateUrl: 'resources/views/hotdeals.html'
+        }).when('/login', {
+        	templateUrl: 'resources/views/login.html',
+        	controller : 'loginCtrl'
+        })
+        .when('/search', {
             templateUrl: 'hotdeals.html'
         }).when('/vendor/register', {
-            templateUrl: 'vendor-registration.html',
+            templateUrl: 'resources/views/vendor-registration.html',
             controller: 'regCtrl'
         }).when('/products/:name', {
-            templateUrl: 'searchProducts.html',
+            templateUrl: 'resources/views/searchProducts.html',
             controller: 'productsCtrl'
         }).when('/productDetail/:id', {
-            templateUrl: 'productDetails.html',
+            templateUrl: 'resources/views/productDetails.html',
             controller: 'productDetailCtrl'
     })
         .otherwise({

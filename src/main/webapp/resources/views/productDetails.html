@@ -22,7 +22,7 @@
                         <a><img ng-src="{{productb.image_link}}" alt="product img"></a>
                         <div class="caption">
                             <!--<h3>Thumbnail label</h3>-->
-                            <p>{{productb.productPrice}}</p>
+                            <p>{{productb.productPrice | currency}}</p>
                             <p>
                                 <a href="#/productDetail/{{productb.productId}}" class="btn btn-info" role="button">Details</a>
                                 <a href="#" class="btn btn-warning" role="button">Add to cart</a>

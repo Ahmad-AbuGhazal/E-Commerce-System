@@ -16,4 +16,8 @@ app.controller('indexCtrl',['$scope','$location','searchService', function($scop
         
         //route to search list page
     }
+    
+    $scope.login = function() {
+    	$location.path("/login");
+    }
 }]);

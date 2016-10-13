@@ -41,15 +41,15 @@
                         </ul>
                     </div>
                     <script type="text/ng-template" id="searchTemplate1.html">
-                        <a href="#/products/{{match.model.name}}">
+                        <a href="#/products/{{match.model.productName}}">
                             <div>
-                                <span ng-bind-html="match.model.name | uibTypeaheadHighlight:query"></span>
+                                <span ng-bind-html="match.model.productName | uibTypeaheadHighlight:query"></span>
                             </div>
 
                         </a>
                     </script>
                     <input type="text" class="form-control" placeholder="Search..." ng-model="searchQuery" ng-change="search()"
-                            id='searchBox' uib-typeahead="product as product.name for product in searchData | filter:{name:$viewValue} | limitTo:3" typeahead-show-hint="true" typeahead-on-select="mo($item, $model, $label, $event)"
+                            id='searchBox' uib-typeahead="product as product.productName for product in searchData | filter:{productName:$viewValue} | limitTo:10" typeahead-show-hint="true" typeahead-on-select="mo($item, $model, $label, $event)"
                            typeahead-template-url="searchTemplate1.html">
         
                     
@@ -71,7 +71,7 @@
                                     <li>
                                         <div class="row">
                                             <div class="col-lg-8 col-lg-offset-3">
-                                                <button type="button" class="btn btn-default">Sign In</button>
+                                                <button type="button" class="btn btn-default" ng-click="login()">Sign In</button>
                                             </div>
                                             <div class="col-lg-11 col-lg-offset-1">
                                                 <a href="#/vendor/register">Register New Account</a>
@@ -123,9 +123,10 @@
     <script src="resources/scripts/regCtrl.js"></script>
     <script src="resources/scripts/searchService.js"></script>
     <script src="resources/scripts/productsCtrl.js"></script>
+    <script src="resources/scripts/modules/login/logCtrl.js"></script>
     
-    <script type="text/javascript" src="resources/styles/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="resources/scripts/slick/slick.min.js"></script>
+    <script src="resources/styles/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="resources/scripts/slick/slick.min.js"></script>
    
 </body>
 

@@ -53,6 +53,44 @@ rapp.service('searchService',['$http','$q', function($http, $q) {
                 		'zipcode': '51426'
                 	}
                 }
+            },
+            {
+                'productId':'3',
+                'productName': 'Amazon Fire',
+                'productPrice':'256.40',
+                'productQuantity': '20',
+                'image_link': 'http://www.technobuffalo.com/wp-content/uploads/2016/09/fire-hd-8-4-200x200.jpg',
+                'description': 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+                'vendor': {
+                	'vendor_id': 'COMP1003',
+                	'vendor_name' : 'Weiwuu Wei',
+                	'owner_name': 'ss',
+                	'address': {
+                		'street': '100N 34',
+                		'city' : 'New York',
+                		'state': 'NJ',
+                		'zipcode': '51426'
+                	}
+                }
+            },
+            {
+                'productId':'4',
+                'productName': 'Nokia Lumia',
+                'productPrice':'75.40',
+                'productQuantity': '20',
+                'image_link': 'http://ixchange.com.au/public/image/cache/data/Uploads_NoBackground/NOKIA/PHONES/nokia-lumia-1320-200x200.jpg',
+                'description': 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+                'vendor': {
+                	'vendor_id': 'COMP1003',
+                	'vendor_name' : 'Weiwuu Wei',
+                	'owner_name': 'ss',
+                	'address': {
+                		'street': '100N 34',
+                		'city' : 'New York',
+                		'state': 'NJ',
+                		'zipcode': '51426'
+                	}
+                }
             }
     ]};
     
