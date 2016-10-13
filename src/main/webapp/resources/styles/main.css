@@ -13,3 +13,23 @@ background-image: url(../images/left-arrow.png);
 z-index: 3000;
 text-indent: -9999px;
 }
+.details-productName{
+    font-size: 200%;
+}
+
+.details-price{
+    font-size: 150%;
+}
+
+.details-border{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.details-text{
+    margin-left: 150px;
+}
+
+.details-border img{
+    margin-top: 10px;
+}
