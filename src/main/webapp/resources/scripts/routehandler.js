@@ -11,7 +11,10 @@ app.config(['$routeProvider', function ($routeProvider) {
         }).when('/products/:name', {
             templateUrl: 'searchProducts.html',
             controller: 'productsCtrl'
-        })
+        }).when('/productDetail/:id', {
+            templateUrl: 'productDetails.html',
+            controller: 'productDetailCtrl'
+    })
         .otherwise({
             templateUrl: '../views/hotdeals.html'
         });

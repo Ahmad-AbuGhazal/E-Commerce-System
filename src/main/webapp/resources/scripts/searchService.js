@@ -1,13 +1,28 @@
 rapp.service('searchService',['$http','$q', function($http, $q) {
     
-    this.searchData =[
+    /*this.searchData ={
+        'data':[
+            {
+                'id':'1',
+                'name': 'Samsung phone',
+                'image': 'image_link',
+                'description': 'This is a samsung phone'
+            },
+             {
+                'id':'1',
+                'name': 'Apple phone',
+                'image': 'image_link',
+                'description': 'This is a apple phone'
+            }
+    ]};*/
+    this.searchData = {'data':[
             {
                 'productId':'1',
                 'productName': 'Samsung phone',
                 'productPrice':'56.40',
                 'productQuantity': '20',
-                'image_link': 'image_link',
-                'description': 'This is a samsung phone',
+                'image_link': 'http://www.technobuffalo.com/wp-content/uploads/2016/04/HTC-10-product-200x200.jpg',
+                'description': 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
                 'vendor': {
                 	'vendor_id': 'COMP1003',
                 	'vendor_name' : 'Weiwuu Wei',
@@ -21,12 +36,12 @@ rapp.service('searchService',['$http','$q', function($http, $q) {
                 }
             },
             {
-                'productId':'1',
+                'productId':'2',
                 'productName': 'Apple phone',
                 'productPrice':'56.40',
                 'productQuantity': '20',
-                'image_link': 'image_link',
-                'description': 'This is a apple phone',
+                'image_link': 'http://www.technobuffalo.com/wp-content/uploads/2016/10/Google-Pixel-product-image-200x200.jpg',
+                'description': 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
                 'vendor': {
                 	'vendor_id': 'COMP1003',
                 	'vendor_name' : 'Weiwuu Wei',
@@ -39,7 +54,10 @@ rapp.service('searchService',['$http','$q', function($http, $q) {
                 	}
                 }
             }
-    ];
+    ]};
+    
+    this.searchOneRes;
+    this.similarProds;
     
     this.search = function(query) {
         
@@ -50,6 +68,25 @@ rapp.service('searchService',['$http','$q', function($http, $q) {
             console.log(error);
         });*/
         return this.searchData.data;
+    }
+    
+    this.searchOne = function(productId) {
+        for(var i=0;i<this.searchData.data.length;i++) {
+            var item = this.searchData.data[i];
+            if(item.productId == productId) {
+                this.searchOneRes = item;
+                break;
+            }
+        }
+        return this.searchOneRes;
+    }
+    
+    this.searchSimilarProds = function(productId) {
+        
+        //get similar products from server
+        
+        this.similarProds = this.searchData;
+        return this.similarProds.data;
     }
     
     function search(query) {

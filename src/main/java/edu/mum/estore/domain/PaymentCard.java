@@ -5,13 +5,35 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
 
 @Entity
 public class PaymentCard {
-		
-		public long getId() {
+
+	@Id
+	@GeneratedValue
+	private long id;
+
+	private String cardHolder;
+
+	private String cardNum;
+
+	private String securityCode;
+
+	private Date expiration;
+
+	private float maxCredit;
+
+	private float availableCredit;
+
+	private boolean status;
+
+	@ManyToOne
+	@JoinColumn(name = "CUS_ID")
+	Customer customer;
+
+	public long getId() {
 		return id;
 	}
 
@@ -75,30 +97,11 @@ public class PaymentCard {
 		this.status = status;
 	}
 
-		@Id
-		@GeneratedValue
-		private long id;
-		
-		private String cardHolder;
-		
-		private String cardNum;
-		
-		private String securityCode;
-		
-		private Date expiration;
-		
-		private float maxCredit;
-		
-		private float availableCredit;
-		
-		private boolean status;
-	    @ManyToOne
-	    Customer customer;
-		public Customer getCustomer() {
-			return customer;
-		}
+	public Customer getCustomer() {
+		return customer;
+	}
 
-		public void setCustomer(Customer customer) {
-			this.customer = customer;
-		}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 }

@@ -1,0 +1,36 @@
+<div class="container details-border">
+    <div class="row">
+        <div class="col-md-1">
+            <img ng-src="{{productDetails.image_link}}" alt="product image">
+        </div>
+        <div class="col-md-9 details-text">
+            <div style="height:1.5em;"></div>
+            <p class="details-productName">{{productDetails.productName}}</p>
+            <p>by <a href=""><span class="details-vendorName">{{productDetails.vendor.vendor_name}}</span></a></p>
+            <p class="details-price">{{productDetails.productPrice | currency}}</p>
+            <p>{{productDetails.description}}</p>
+            <a href="#" class="btn btn-warning" role="button">Add to cart</a>
+        </div>
+    </div>
+    <hr>
+    <h2>You may also like</h2>
+    <div class="row">
+        <ul style="list-style-type:none;">
+            <li style="display:inline;" ng-repeat="productb in similarProducts">
+                <div class="col-sm-6 col-md-3">
+                    <div class="thumbnail">
+                        <a><img ng-src="{{productb.image_link}}" alt="product img"></a>
+                        <div class="caption">
+                            <!--<h3>Thumbnail label</h3>-->
+                            <p>{{productb.productPrice}}</p>
+                            <p>
+                                <a href="#/productDetail/{{productb.productId}}" class="btn btn-info" role="button">Details</a>
+                                <a href="#" class="btn btn-warning" role="button">Add to cart</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

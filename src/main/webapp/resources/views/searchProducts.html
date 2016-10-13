@@ -1,45 +1,20 @@
-<div class="container" ng-click="mo()">
+<div class="container">
+    <ul style="list-style-type:none;">
+        <li ng-repeat="product in productList">
             <div class="row">
-                <div class="col-md-1">
-                    <a href=""><img src="custom/img/product.jpg" alt="product image"></a>
+                <div class="col-lg-2 col-lg-offset-1">
+                    <a href="#/productDetail/{{product.productId}}"><img ng-src="{{product.image_link}}" alt="product image"></a>
                 </div>
-                <div class="col-md-9 details-text">
-                    <p class="details-productName"><a href="">Product name</a></p>
-                    <p>by vendor</p>
-                    <p class="details-price">$9.99</p>
+                <div class="col-lg-5 details-text">
+                    <div style="height:2em;"></div>
+                    <div>
+                        <p class="details-productName"><a href="#/productDetail/{{product.productId}}">{{product.productName}}</a></p>
+                        <p>by <a href=""><span class="details-vendorName">{{product.vendor.vendor_name}}</span></a></p>
+                        <p class="details-price">{{product.productPrice | currency}}</p>
+                    </div>
                 </div>
             </div>
             <hr>
-            <div class="row">
-                <div class="col-md-1">
-                    <a href=""><img src="custom/img/product.jpg" alt="product image"></a>
-                </div>
-                <div class="col-md-9 details-text">
-                    <p class="details-productName"><a href="">Product name</a></p>
-                    <p>by vendor</p>
-                    <p class="details-price">$9.99</p>
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-md-1">
-                    <a href=""><img src="custom/img/product.jpg" alt="product image"></a>
-                </div>
-                <div class="col-md-9 details-text">
-                    <p class="details-productName"><a href="">Product name</a></p>
-                    <p>by vendor</p>
-                    <p class="details-price">$9.99</p>
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-md-1">
-                    <a href=""><img src="custom/img/product.jpg" alt="product image"></a>
-                </div>
-                <div class="col-md-9 details-text">
-                    <p class="details-productName"><a href="">Product name</a></p>
-                    <p>by vendor</p>
-                    <p class="details-price">$9.99</p>
-                </div>
-            </div>
-        </div>
+        </li>
+    </ul>
+</div>
