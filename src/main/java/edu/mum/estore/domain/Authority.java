@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 
 @Entity(name="authority")
 public class Authority {
@@ -14,6 +15,8 @@ public class Authority {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
+	@Size(min = 5, max = 50)
+	@Column(nullable = false, unique = true, length = 127)
 	private String username;
 	@Column(nullable = false)
 	private String authority;
