@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.mum.estore.domain.Customer;
 import edu.mum.estore.domain.Product;
 import edu.mum.estore.domain.ResponseInfo;
 import edu.mum.estore.domain.ShoppingCard;
@@ -62,15 +63,19 @@ public class ShoppingController {
     
     @ResponseBody
   	@RequestMapping(value = "/shopping/processtoCheckout")
-  	public void checkout() {
-    	// check if the user login in the system
+  	public void checkout() { 
     	
-    	// IF NOT goto login page
-        
-    	//check if the user have payment card 
-    	// IF NOT goto add payment card
+    	// input is 
+    	//Step 1 : check if the customer is login to the system
+    	//Step 2 : check if the user have payment card
+    	//Step 3 : 
+    	//step 3 : update the products quantities 
+    	//Step 4 : prepare the order
+    	//Step 5 : if the order success send email to the vendor of each product 
+    	//         with the products information and quantity number
+    	//Step 6: prepare the information for the invoice for the customer
+    	//Step 6
     	
-    	//select payment card
     	
     }
 }

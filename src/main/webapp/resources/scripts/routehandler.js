@@ -8,8 +8,11 @@ $routeProvider.when('/', {
 }).when('/vendor/register',{
     templateUrl: 'resources/views/vendor-registration.html',
     controller: 'regCtrl'
+}).when('/login',{
+    templateUrl: 'resources/views/login.html',
+    controller: 'login/logCtrl'
 })
-    .otherwise({
+  .otherwise({
     templateUrl: 'resources/views/hotdeals.html'
 });
 }]);

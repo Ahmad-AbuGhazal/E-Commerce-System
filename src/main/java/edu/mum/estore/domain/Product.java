@@ -14,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="Product_Table")
 public class Product {
 	@Id
 	@Column(name="ProductID")
@@ -27,6 +26,20 @@ public class Product {
 	private long productQuantity;
 	private long maxPerCustomer;
 	private long lockNumber;
+	private String description;
+	private String imageLink;
+	public String getImageLink() {
+		return imageLink;
+	}
+	public void setImageLink(String imageLink) {
+		this.imageLink = imageLink;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	public long getMaxPerCustomer() {
 		return maxPerCustomer;
 	}
