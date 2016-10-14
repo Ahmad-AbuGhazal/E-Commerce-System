@@ -53,10 +53,10 @@ public class Customer{
 	@Transient
 	private ShoppingCard card=new ShoppingCard();
 	
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="customer")
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="customer")
 	List<Order> orders=new ArrayList<>();
 	
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="customer")
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="customer",fetch=FetchType.EAGER)
 	List<PaymentCard> paymentCards=new ArrayList<>();
 	public long getId() {
 		return id;
