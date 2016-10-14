@@ -32,7 +32,7 @@
             <div class="col-lg-7">
                 <div class="input-group">
                     <div class="input-group-btn">
-                        <button type="button" class="btn btn-default" dropdown-toggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Categories <span class="caret"></span></button>
+                        <button type="button" class="btn btn-default" dropdown-toggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{categoryName}} <span class="caret"></span></button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuCategories">
                             <li><a href="#">Electronics</a></li>
                             <li><a href="#">Flowers</a></li>
@@ -123,6 +123,7 @@
     <script src="resources/scripts/regCtrl.js"></script>
     <script src="resources/scripts/searchService.js"></script>
     <script src="resources/scripts/productsCtrl.js"></script>
+    <script src="resources/scripts/memService.js"></script>
     <script src="resources/scripts/modules/login/logCtrl.js"></script>
     
     <script src="resources/styles/bootstrap-3.3.7/js/bootstrap.min.js"></script>

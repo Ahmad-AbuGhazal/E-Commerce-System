@@ -1,21 +1,8 @@
-rapp.service('searchService',['$http','$q', function($http, $q) {
+rapp.service('searchService',['$http','$q','memService', function($http, $q, memService) {
     
-    /*this.searchData ={
-        'data':[
-            {
-                'id':'1',
-                'name': 'Samsung phone',
-                'image': 'image_link',
-                'description': 'This is a samsung phone'
-            },
-             {
-                'id':'1',
-                'name': 'Apple phone',
-                'image': 'image_link',
-                'description': 'This is a apple phone'
-            }
-    ]};*/
-    this.searchData = {'data':[
+    this.searchData = {
+    		'data':[]
+    };/*= {'data':[
             {
                 'productId':'1',
                 'productName': 'Samsung phone',
@@ -92,25 +79,44 @@ rapp.service('searchService',['$http','$q', function($http, $q) {
                 	}
                 }
             }
-    ]};
+    ]};*/
     
     this.searchOneRes;
     this.similarProds;
     
-    this.search = function(query) {
-        
-       /* search(query).then(function(data) {
-            console.log(data);
-            searchData = data;
-        }, function(error) {
-            console.log(error);
-        });*/
-        return this.searchData.data;
+    this.getSearchData = function() {
+    	return this.searchData.data;
+    };
+    
+    var callbacks = [];
+    
+    this.registerCallback = function(callbackFunc) {
+    	callbacks.push(callbackFunc);
+    };
+    
+    function notify(data) {
+    	angular.forEach(callbacks, function(callback) {
+    		callback(data);
+    	})
+    };
+    
+    this.response = function(response) {
+    	this.searchData = response.data.data;
+    	notify(response.data.data);
+    	memService.setsdata(response.data.data);
+    };
+    
+    this.search = function(query, category) {
+    	
+       search(query, category).then(this.response, function(error) {
+        	console.log(this.error);
+        });
     }
     
     this.searchOne = function(productId) {
-        for(var i=0;i<this.searchData.data.length;i++) {
-            var item = this.searchData.data[i];
+    	var data = memService.getsdata();
+        for(var i=0;i<data.length;i++) {
+            var item = data[i];
             if(item.productId == productId) {
                 this.searchOneRes = item;
                 break;
@@ -119,21 +125,40 @@ rapp.service('searchService',['$http','$q', function($http, $q) {
         return this.searchOneRes;
     }
     
-    this.searchSimilarProds = function(productId) {
-        
+    this.searchSimilarProds = function(productId) {        
         //get similar products from server
-        
-        this.similarProds = this.searchData;
-        return this.similarProds.data;
+    	var deferred = $q.defer();
+    	searchSimilarProds(productId).then(function(response) {
+        	memService.setSimilarProdsData(response.data.data);
+        	deferred.resolve();
+        }, function(error) {
+        	console.log(this.error);
+        	deferred.reject(error);
+        });
+    	return deferred.promise;
     }
     
-    function search(query) {
-        var linkUrl = 'products/';
+    function search(productName, categoryName) {
+        var linkUrl ="products";
         var deferred = $q.defer();
         $http({
             method : 'GET',
             url : linkUrl,
-            data : query
+            params: {'productName':productName, 'productCategory' : categoryName}
+        }).then(function(data) {
+            deferred.resolve(data);
+        }, function(error) {
+            deferred.reject(error);
+        });
+        return deferred.promise;
+    }
+    
+    function searchSimilarProds(productId) {
+        var linkUrl ="/products/"+productId+"/names";
+        var deferred = $q.defer();
+        $http({
+            method : 'GET',
+            url : linkUrl
         }).then(function(data) {
             deferred.resolve(data);
         }, function(error) {

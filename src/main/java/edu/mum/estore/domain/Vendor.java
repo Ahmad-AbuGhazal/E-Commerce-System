@@ -89,10 +89,4 @@ public class Vendor {
 		this.requestedCard = requestedCard;
 	}
 
-	public String getAsString() {
-		return "Vendor [vendor_sn=" + vendor_sn + ", vendor_id=" + vendor_id + ", vendor_name=" + vendor_name
-				+ ", owner_name=" + owner_name + ", address=" + address.toString() + ", requestedCard=" + requestedCard.toString() + "]";
-	}	
-	
-	
 }

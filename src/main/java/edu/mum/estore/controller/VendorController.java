@@ -23,7 +23,6 @@ public class VendorController {
 	@ResponseStatus(value=HttpStatus.OK)
 	@RequestMapping(value="/vendor/add/", method=RequestMethod.POST, consumes="application/json")
 	public ResponseInfo addVendor(@RequestBody Vendor vendor) {
-		System.out.println(vendor.getAsString());
 		return vendorService.addVendor(vendor);
 	}
 }

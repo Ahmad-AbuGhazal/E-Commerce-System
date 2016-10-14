@@ -48,11 +48,4 @@ public class Address {
 		this.zipcode = zipcode;
 	}
 
-	@Override
-	public String toString() {
-		return "Address [id=" + id + ", street=" + street + ", city=" + city + ", state=" + state + ", zipcode="
-				+ zipcode + "]";
-	}
-	
-	
 }

@@ -28,6 +28,7 @@ public class ProductRepositoryImpl implements ProductRepository{
 				"SELECT p from Product p WHERE p.productName LIKE :productName AND p.category.categoryName=:categoryName");
 		List<Product> products = (List<Product>) query.setParameter("productName",productName + "%" )
 				.setParameter("categoryName", productCategory).getResultList();
+		System.out.println(products);
 		return products;
 
 	}

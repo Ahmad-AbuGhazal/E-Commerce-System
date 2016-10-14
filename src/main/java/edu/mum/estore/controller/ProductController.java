@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.mum.estore.domain.JsonResponse;
 import edu.mum.estore.domain.Product;
 import edu.mum.estore.domain.ResponseInfo;
 import edu.mum.estore.service.ProductService;
@@ -28,10 +29,12 @@ public class ProductController {
 
 	@ResponseBody
 	@ResponseStatus(value = HttpStatus.OK)
-	@RequestMapping(value = "/products", method = RequestMethod.GET,consumes="application/json")
-	public List<Product> searchProduct(@RequestParam("productName") String productName,
+	@RequestMapping(value = "/products", method = RequestMethod.GET, produces="application/json")
+	public JsonResponse searchProduct(@RequestParam("productName") String productName,
 			@RequestParam("productCategory") String categoryName) {
-		return productService.searchProduct(productName, categoryName);
+		JsonResponse response = new JsonResponse();
+		response.setData(productService.searchProduct(productName, categoryName));
+		return response;
 
 	}
 	

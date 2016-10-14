@@ -87,10 +87,4 @@ public class RequestedCard {
 		this.purchaseAmount = purchaseAmount;
 	}
 
-	@Override
-	public String toString() {
-		return "RequestedCard [cardType=" + cardType + ", cardHolder=" + cardHolder + ", cardNum=" + cardNum
-				+ ", securityCode=" + securityCode + ", expiration=" + expiration + ", purchaseAmount=" + purchaseAmount
-				+ "]";
-	}
 }
