@@ -1,7 +1,7 @@
 <div class="container details-border">
     <div class="row">
         <div class="col-md-1">
-            <img ng-src="{{productDetails.image_link}}" alt="product image">
+            <img width="200px" height="200px" ng-src="{{productDetails.image_link}}" alt="product image" />
         </div>
         <div class="col-md-9 details-text">
             <div style="height:1.5em;"></div>
@@ -19,7 +19,7 @@
             <li style="display:inline;" ng-repeat="productb in similarProducts">
                 <div class="col-sm-6 col-md-3">
                     <div class="thumbnail">
-                        <a><img ng-src="{{productb.image_link}}" alt="product img"></a>
+                        <a><img width="200px" height="200px" ng-src="{{productb.image_link}}" alt="product img"></a>
                         <div class="caption">
                             <!--<h3>Thumbnail label</h3>-->
                             <p>{{productb.productPrice | currency}}</p>

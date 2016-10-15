@@ -47,7 +47,7 @@
                     </script>
                     <input type="text" class="form-control" placeholder="Search..." ng-model="searchQuery" ng-change="search()"
                             id='searchBox' uib-typeahead="product as product.productName for product in searchData | filter:{productName:$viewValue} | limitTo:10" typeahead-show-hint="true" typeahead-on-select="mo($item, $model, $label, $event)"
-                           typeahead-template-url="searchTemplate1.html">
+                           typeahead-template-url="searchTemplate1.html" ng-keypress="searchEnter($event)">
         
                     
                     <span class="input-group-btn">

@@ -51,5 +51,9 @@ app.controller('indexCtrl',['$scope','$location','$q','$http','searchService','m
     	$location.path("/login");
     }
     
+    $scope.searchEnter = function(event) {
+    	if(event.keyCode==13)
+    		$scope.searchClick();
+    }
     
 }]);

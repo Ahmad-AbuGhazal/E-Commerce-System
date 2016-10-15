@@ -49,11 +49,13 @@ public class ProductController {
 	@ResponseBody
 	@ResponseStatus(value = HttpStatus.OK)
 	@RequestMapping(value = "/products/{id}/names", method = RequestMethod.GET,produces="application/json")
-	public List<Product> searchSimillerProductById(@PathVariable("id") long productId) {
+	public JsonResponse<Product> searchSimillerProductById(@PathVariable("id") long productId) {
+		JsonResponse<Product> response = new JsonResponse<Product>();
 		Product product=productService.get(productId);
-		List<Product> products=productService.searchProduct(product.getProductName(), product.getCategory().getCategoryName());
+		List<Product> products=productService.searchProduct(product.getProductName().substring(0, 1), product.getCategory().getCategoryName());
 		products=products.stream().limit(4).collect(Collectors.toList());
-		return products;
+		response.setData(products);
+		return response;
 	}
 	
 
