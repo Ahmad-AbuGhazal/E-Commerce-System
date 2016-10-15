@@ -101,7 +101,6 @@ rapp.service('searchService',['$http','$q','memService', function($http, $q, mem
     };
     
     this.response = function(response) {
-    	this.searchData = response.data.data;
     	notify(response.data.data);
     	memService.setsdata(response.data.data);
     };
@@ -138,6 +137,18 @@ rapp.service('searchService',['$http','$q','memService', function($http, $q, mem
     	return deferred.promise;
     }
     
+    this.getCategories = function() {
+    	var deferred = $q.defer();
+    	getCategories().then(function(response) {
+        	memService.setCatList(response.data);
+        	deferred.resolve();
+        }, function(error) {
+        	console.log(this.error);
+        	deferred.reject(error);
+        });
+    	return deferred.promise;
+    }
+    
     function search(productName, categoryName) {
         var linkUrl ="products";
         var deferred = $q.defer();
@@ -154,13 +165,27 @@ rapp.service('searchService',['$http','$q','memService', function($http, $q, mem
     }
     
     function searchSimilarProds(productId) {
-        var linkUrl ="/products/"+productId+"/names";
+        var linkUrl ="products/"+productId+"/names";
         var deferred = $q.defer();
         $http({
             method : 'GET',
             url : linkUrl
         }).then(function(data) {
             deferred.resolve(data);
+        }, function(error) {
+            deferred.reject(error);
+        });
+        return deferred.promise;
+    }
+    
+    function getCategories() {
+    	var linkUrl ="categories";
+        var deferred = $q.defer();
+        $http({
+            method : 'GET',
+            url : linkUrl
+        }).then(function(response) {
+            deferred.resolve(response.data);
         }, function(error) {
             deferred.reject(error);
         });

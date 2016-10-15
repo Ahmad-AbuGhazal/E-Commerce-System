@@ -34,10 +34,7 @@
                     <div class="input-group-btn">
                         <button type="button" class="btn btn-default" dropdown-toggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">{{categoryName}} <span class="caret"></span></button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuCategories">
-                            <li><a href="#">Electronics</a></li>
-                            <li><a href="#">Flowers</a></li>
-                            <li><a href="#">Computers</a></li>
-                            <li><a href="#">Mobile phones</a></li>
+                            <li ng-repeat="cat in catList"><a ng-click="catClick(cat.categoryName)">{{cat.categoryName}}</a></li>
                         </ul>
                     </div>
                     <script type="text/ng-template" id="searchTemplate1.html">
@@ -55,7 +52,7 @@
                     
                     <span class="input-group-btn">
                             <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"
-                                     ng-click="searchClick()"></span> Search</button>
+                                      ng-click="searchClick()"></span> Search</button>
                     </span> 
                 </div>
             </div>

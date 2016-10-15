@@ -30,9 +30,9 @@ public class ProductController {
 	@ResponseBody
 	@ResponseStatus(value = HttpStatus.OK)
 	@RequestMapping(value = "/products", method = RequestMethod.GET, produces="application/json")
-	public JsonResponse searchProduct(@RequestParam("productName") String productName,
+	public JsonResponse<Product> searchProduct(@RequestParam("productName") String productName,
 			@RequestParam("productCategory") String categoryName) {
-		JsonResponse response = new JsonResponse();
+		JsonResponse<Product> response = new JsonResponse<Product>();
 		response.setData(productService.searchProduct(productName, categoryName));
 		return response;
 
@@ -40,7 +40,7 @@ public class ProductController {
 	
 	@ResponseBody
 	@ResponseStatus(value = HttpStatus.OK)
-	@RequestMapping(value = "/products/{id}", method = RequestMethod.GET,consumes="application/json")
+	@RequestMapping(value = "/products/{id}", method = RequestMethod.GET,produces="application/json")
 	public Product searchProductById(@PathVariable("id") long productId) {
 		Product product=productService.get(productId);
 		return product;
@@ -48,7 +48,7 @@ public class ProductController {
 	
 	@ResponseBody
 	@ResponseStatus(value = HttpStatus.OK)
-	@RequestMapping(value = "/products/{id}/names", method = RequestMethod.GET,consumes="application/json")
+	@RequestMapping(value = "/products/{id}/names", method = RequestMethod.GET,produces="application/json")
 	public List<Product> searchSimillerProductById(@PathVariable("id") long productId) {
 		Product product=productService.get(productId);
 		List<Product> products=productService.searchProduct(product.getProductName(), product.getCategory().getCategoryName());

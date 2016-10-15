@@ -6,9 +6,6 @@ app.config(['$routeProvider', function ($routeProvider) {
         }).when('/login', {
         	templateUrl: 'resources/views/login.html',
         	controller : 'loginCtrl'
-        })
-        .when('/search', {
-            templateUrl: 'hotdeals.html'
         }).when('/vendor/register', {
             templateUrl: 'resources/views/vendor-registration.html',
             controller: 'regCtrl'
@@ -20,7 +17,7 @@ app.config(['$routeProvider', function ($routeProvider) {
             controller: 'productDetailCtrl'
     })
         .otherwise({
-            templateUrl: '../views/hotdeals.html'
+            templateUrl: 'resources/views/hotdeals.html'
         });
 }]);
 

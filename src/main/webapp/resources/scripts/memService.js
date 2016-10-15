@@ -3,6 +3,8 @@ rapp.service('memService',[function() {
 	
 	this.similarProdsData = {'data':[]};
 	
+	this.catList = {'data':[]};
+	
 	this.getsdata = function() {
 		return this.sdata;
 	}
@@ -17,5 +19,13 @@ rapp.service('memService',[function() {
 	
 	this.setSimilarProdsData = function(data) {
 		this.similarProdsData = data;
+	}
+	
+	this.getCatList = function() {
+		return this.catList;
+	}
+	
+	this.setCatList = function(data) {
+		this.catList = data;
 	}
 }]);

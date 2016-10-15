@@ -3,7 +3,7 @@ rapp.controller('productsCtrl', ['$scope', '$location', 'searchService','memServ
     $scope.productList = memService.getsdata();
     
     $scope.mo = function () {
-        console.log($location.path().split("/")[2]);
+        console.log(window.encodeURIComponent($location.path().split("/")[2]));
     }
 }]);
 
@@ -11,7 +11,7 @@ rapp.controller('productDetailCtrl',['$scope', '$location', 'searchService','mem
                                      function($scope, $location, searchService, memService) {
     //$scope.productDetail = searchService.searchOne($location.path().split("/")[2]);
     
-    $scope.productDetails = searchService.searchOne($location.path().split("/")[2]);
+    $scope.productDetails = searchService.searchOne(window.encodeURIComponent($location.path().split("/")[2]));
     
     
     
@@ -19,7 +19,7 @@ rapp.controller('productDetailCtrl',['$scope', '$location', 'searchService','mem
     
     
     this.reload = function() {
-        $scope.productDetails = searchService.searchOne($location.path().split("/")[2]);
+        $scope.productDetails = searchService.searchOne(window.encodeURIComponent($location.path().split("/")[2]));
     
         getSimilarProdsData();
     }
@@ -28,6 +28,7 @@ rapp.controller('productDetailCtrl',['$scope', '$location', 'searchService','mem
     	searchService.searchSimilarProds($location.path().split("/")[2])
     	.then(function() {
     		$scope.similarProducts = memService.getSimilarProdsData();
+    		console.log($scope.similarProducts);
     	}, function(error){
     		
     	});
