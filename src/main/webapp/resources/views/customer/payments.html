@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-10">
+        <h1> Profile</h1>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-2">
+
+        <ul class="nav nav-stacked">
+            <li><a href="#" target="ext"><i class="glyphicon glyphicon-euro"></i> payments</a></li>
+            <li><a href="#" target="ext"><i class="glyphicon glyphicon-list-alt"></i> Reports</a></li>
+            <li><a href="#" target="ext"><i class="glyphicon glyphicon-book"></i> Books</a></li>
+            <li><a href="#" target="ext"><i class="glyphicon glyphicon-briefcase"></i> Tools</a></li>
+            <li><a href="#" target="ext"><i class="glyphicon glyphicon-time"></i> Real-time</a></li>
+            <li><a href="#" target="ext"><i class="glyphicon glyphicon-plus"></i> Advanced..</a></li>
+        </ul>
+
+    </div>
+
+    <div class="col-lg-8">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Panel heading</div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Card Holder</th>
+                     
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="payment in payments">
+                         <td>{{payment.cardHolder}}</td>
+                          
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div class="col-lg-1"></div>
+
+</div>
+
+</div>

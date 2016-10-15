@@ -124,8 +124,16 @@
     <script src="resources/scripts/searchService.js"></script>
     <script src="resources/scripts/productsCtrl.js"></script>
     <script src="resources/scripts/memService.js"></script>
+    <!-- login module -->
     <script src="resources/scripts/modules/login/logCtrl.js"></script>
-    
+    <!-- Payment module -->
+    <script src="resources/scripts/modules/payment/paymentService.js"></script>
+    <script src="resources/scripts/modules/payment/paymentcontroller.js"></script>
+    <!-- Order module -->
+ <script src="resources/scripts/modules/order/orderService.js"></script>
+    <script src="resources/scripts/modules/order/orderController.js"></script>
+   
+
     <script src="resources/styles/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script src="resources/scripts/slick/slick.min.js"></script>
    

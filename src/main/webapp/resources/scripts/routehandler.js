@@ -6,10 +6,20 @@ app.config(['$routeProvider', function ($routeProvider) {
         }).when('/login', {
         	templateUrl: 'resources/views/login.html',
         	controller : 'loginCtrl'
-        })
-        .when('/search', {
+        }).when('/search', {
             templateUrl: 'hotdeals.html'
-        }).when('/vendor/register', {
+        }).when('/customer/profile',{
+        templateUrl:'resources/views/customer/profile.html'
+        })
+        .when('/customer/payments',{
+        templateUrl:'resources/views/customer/payments.html',
+        controller:'paymentCtrl'
+        })
+        .when('/customer/orders',{
+        templateUrl:'resources/views/customer/orders.html',
+        controller:'orderCtrl'
+        })
+        .when('/vendor/register', {
             templateUrl: 'resources/views/vendor-registration.html',
             controller: 'regCtrl'
         }).when('/products/:name', {

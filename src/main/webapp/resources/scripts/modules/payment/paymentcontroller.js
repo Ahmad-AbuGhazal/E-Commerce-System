@@ -1,20 +1,8 @@
-rapp.controller('paymentCtrl', ['$scope', 'paymentService', '$q', '$location', function ($scope, $q, paymentService, $location) {
-    
-    $scope.payments=[];
-    $scope.payment =
-        {
-            "id": '',
-            "cardHolder": "",
-            "cardNum": "",
-            "securityCode": "",
-            "expiration": '',
-            "maxCredit": '',
-            "availableCredit": '',
-            "status": ''
-        };
-
-
-    $scope.getPayments = function getPayments(customerId) {
-        $scope.payments = paymentService.getPayments(customerId);
-    };
+rapp.controller('paymentCtrl', ['$scope', '$q', '$location','$http','paymentService', function ($scope, $q, $location,$http,paymentService) {
+$scope.payments=[];
+// get payments
+paymentService.getPayments(1)
+.then(function (res) {
+          $scope.payments=res.data;
+   });
 }]);

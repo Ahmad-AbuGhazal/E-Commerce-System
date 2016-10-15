@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "ORDERS")
 public class Order {
@@ -32,7 +34,7 @@ public class Order {
 	private Date orderDate;
 	private String status;
 
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name="CUS_ID")
 	Customer customer;
 	
@@ -55,7 +57,7 @@ public class Order {
 	public Long getId() {
 		return id;
 	}
-
+    @JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="order_id")
 	List<OrderDetails> details = new ArrayList<>();

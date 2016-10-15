@@ -1,11 +1,12 @@
-rapp.service('paymentService', ['$http', '$q', function ($http, $q) {
+rapp.service('orderService',['$http','$q', function($http, $q) {
+this.orders=[];
+this.getorders=function getorders(customerId){
 
-    this.getPayments = function (customerId) {
+// call http service to get all orders
         var deferred = $q.defer();
-        // call http service to get all orders
         $http({
             method: 'GET',
-            url: '/estore/customers/' + customerId + '/payments'
+            url: '/estore/customers/' + customerId + '/orders'
         }).then(function (res) {
             deferred.resolve(res);
         }, function (error) {
@@ -14,3 +15,4 @@ rapp.service('paymentService', ['$http', '$q', function ($http, $q) {
         return deferred.promise;
     };
 }]);
+ 
