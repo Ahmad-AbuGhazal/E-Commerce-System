@@ -9,24 +9,30 @@
 <div class="row">
     <div class="col-lg-1"></div>
     <div class="col-lg-2">
+          <ul class="nav nav-stacked">
+            <li><a href="/estore/#/customer/payments" target="ext"><i class="glyphicon glyphicon-euro"></i> payments</a></li>
+            <li><a href="/estore/#/customer/orders" target="ext"><i class="glyphicon glyphicon-list-alt"></i> Orders</a></li>
+        </ul>
     </div>
 
     <div class="col-lg-8">
 
         <div class="panel panel-default">
             <div class="panel-heading">Panel heading</div>
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Card Holder</th>
+                     
+                    
                      
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="order in orders">
+                        
                          <td>{{order.orderDate | date}}</td>
-                         
+                        
                     </tr>
                 </tbody>
             </table>

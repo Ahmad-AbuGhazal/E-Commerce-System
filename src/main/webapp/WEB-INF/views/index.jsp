@@ -124,8 +124,12 @@
     <!-- login module -->
     <script src="resources/scripts/modules/login/logCtrl.js"></script>
     <!-- Payment module -->
+
+    <script src="resources/scripts/modules/payment/cardFilter.js"></script>
     <script src="resources/scripts/modules/payment/paymentService.js"></script>
     <script src="resources/scripts/modules/payment/paymentcontroller.js"></script>
+    
+    
     <!-- Order module -->
  <script src="resources/scripts/modules/order/orderService.js"></script>
     <script src="resources/scripts/modules/order/orderController.js"></script>
