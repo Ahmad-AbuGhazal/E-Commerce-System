@@ -52,11 +52,11 @@ public class Customer{
 	@JsonIgnore
 	@Transient
 	private ShoppingCard card=new ShoppingCard();
-	
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="customer")
+	@JsonIgnore
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="customer")
 	List<Order> orders=new ArrayList<>();
-	
-	@OneToMany(cascade=CascadeType.ALL,mappedBy="customer",fetch=FetchType.EAGER)
+	@JsonIgnore
+	@OneToMany(cascade=CascadeType.ALL,mappedBy="customer",fetch=FetchType.LAZY)
 	List<PaymentCard> paymentCards=new ArrayList<>();
 	public long getId() {
 		return id;

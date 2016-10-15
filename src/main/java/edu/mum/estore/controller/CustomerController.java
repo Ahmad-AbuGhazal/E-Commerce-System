@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.mum.estore.domain.Customer;
+import edu.mum.estore.domain.Order;
+import edu.mum.estore.domain.OrderDetails;
 import edu.mum.estore.domain.PaymentCard;
 import edu.mum.estore.exception.PaymentNotValidException;
 import edu.mum.estore.service.CustomerService;
+import edu.mum.estore.service.OrderService;
 import edu.mum.estore.service.PaymentCardService;
 
 @RestController
@@ -25,7 +28,8 @@ public class CustomerController {
 CustomerService customerService;
 @Autowired
 PaymentCardService paymentCardService;
-
+@Autowired
+OrderService orderService;
 
 @ResponseBody
 @RequestMapping(value="/customers/{id}")
@@ -45,7 +49,7 @@ public void addPayment(@RequestParam("id") long id,@Valid@RequestBody PaymentCar
 	
 }
 
-
+@ResponseBody
 @RequestMapping(value="/customers/{id}/payments/{paymentId}",method=RequestMethod.GET)
 public void removePayment(@PathVariable("id") long customerId,@PathVariable("paymentId") long paymentId){
 	try
@@ -56,9 +60,26 @@ public void removePayment(@PathVariable("id") long customerId,@PathVariable("pay
 	throw new PaymentNotValidException("Payment Card Not Found");
 	}
 }
-
-@RequestMapping(value="/customers/{id}/payments",method=RequestMethod.GET)
-public @ResponseBody List<PaymentCard> getPayments(@PathVariable("id") long customerId){
+@ResponseBody
+@RequestMapping(value="/customers/{id}/payments",method=RequestMethod.GET, produces="application/json")
+public  List<PaymentCard> getPayments(@PathVariable("id") long customerId){
 	return paymentCardService.getAll(customerId);
+}
+@ResponseBody
+@RequestMapping(value="/customers/{id}/payments/{paymentId}",method=RequestMethod.GET, produces="application/json")
+public  PaymentCard getPayment(@PathVariable("id") long customerId,@PathVariable("paymentId") long paymentId){
+	if(customerId>=0)
+	return paymentCardService.get(paymentId);
+	else return null;
+}
+@ResponseBody
+@RequestMapping(value="/customers/{id}/orders",method=RequestMethod.GET, produces="application/json")
+public  List<Order> getOrders(@PathVariable("id") long customerId){
+	return orderService.getAll(customerId);
+}
+@ResponseBody
+@RequestMapping(value="/customers/{id}/orders/{orderId}",method=RequestMethod.GET, produces="application/json")
+public  List<OrderDetails> getOrderDetails(@PathVariable("id") long customerId,@PathVariable("orderId") long orderId){
+	return orderService.getOrderDetails(orderId);
 }
 }

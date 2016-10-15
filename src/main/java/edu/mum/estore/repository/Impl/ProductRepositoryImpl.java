@@ -26,9 +26,8 @@ public class ProductRepositoryImpl implements ProductRepository{
 	public List<Product> searchProduct(String productName, String productCategory) {
 		Query query = entityManager.createQuery(
 				"SELECT p from Product p WHERE p.productName LIKE :productName AND p.category.categoryName=:categoryName");
-		List<Product> products = (List<Product>) query.setParameter("productName",productName + "%" )
+		List<Product> products = (List<Product>) query.setParameter("productName","%"+productName + "%" )
 				.setParameter("categoryName", productCategory).getResultList();
-		System.out.println(products);
 		return products;
 
 	}
@@ -56,7 +55,8 @@ public class ProductRepositoryImpl implements ProductRepository{
 	public Product update(Product product) {
 		Query query = entityManager.createQuery(
 				"UPDATE Product p SET p.lockNumber=:lockNumber WHERE p.productId=:productId");
-		query.setParameter("productId", product.getProductId()).setParameter("lockNumber", product.getLockNumber());
+		System.out.println(product.getLockNumber());
+		query.setParameter("productId", product.getProductId()).setParameter("lockNumber", product.getLockNumber()).executeUpdate();
         return product;
 	}
 
