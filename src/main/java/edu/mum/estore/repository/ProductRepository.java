@@ -10,4 +10,5 @@ public interface ProductRepository {
 	Product getProductByName(long vendorId,String productName);
 	Product get(long productId);
 	Product update(Product product);
+	List<Product> findProductsByVendorId(long vendorId);
 }

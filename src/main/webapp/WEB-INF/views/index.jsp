@@ -139,6 +139,7 @@
 
     <!-- vendor module -->
     <script src="resources/scripts/modules/vendor/directives/profileDirective.js"></script>
+    <script src="resources/scripts/modules/vendor/directives/addProductDirective.js"></script>
     <script src="resources/scripts/modules/vendor/vendorService.js"></script>
     <script src="resources/scripts/modules/vendor/vendorController.js"></script>
 

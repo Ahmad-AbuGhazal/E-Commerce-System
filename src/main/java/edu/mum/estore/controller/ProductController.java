@@ -88,5 +88,12 @@ public class ProductController {
 		}
 		return info;
 	}
+	
+	
+	@RequestMapping(value = "/vendors/{vendor_sn}/products", method = RequestMethod.GET)
+	public @ResponseBody List<Product> viewProducts(@PathVariable long vendorId){
+	return productService.findProductsByVendorId(vendorId);
+	}
+
 
 }

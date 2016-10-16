@@ -1,23 +1,52 @@
-rapp.controller('vendorCtrl', ['$scope', '$q', '$location','$http','vendorService', function ($scope, $q, $location,$http,vendorService) {
+rapp.controller('vendorCtrl', ['$scope', '$q', '$location', '$http', 'vendorService', 'searchService', function ($scope, $q, $location, $http, vendorService, searchService) {
 
-// get vendor profile
-
-
-$scope.vendor={};
-$scope.proucts=[];
-$scope.profilePageIndicator=true;
-
-vendorService.getVendor(1)
-.then(function (res) {
-          $scope.vendor=res.data;
-   });
+    // get vendor profile
 
 
-$scope.getProducts=function getProducts(){
-   vendorService.getProducts(vendor_sn).then(function (res) {
-          $scope.products=res.data;
-   });
+    $scope.vendor = {};
+    $scope.proucts = [];
+    $scope.product = {};
+    $scope.categoriesList = [];
+    $scope.profilePageIndicator = true;
+    $scope.addProductPageIndicator = false;
 
-};
+    //get vendor profile
+    vendorService.getVendor(1)
+        .then(function (res) {
+            $scope.vendor = res.data;
+        });
+
+    // profile page view
+    $scope.profilePageView = function profilePageView() {
+        $scope.profilePageIndicator = true;
+        $scope.addProductPageIndicator = false;
+
+    }
+    //get categories
+    searchService.getCategories()
+        .then(function (res) {
+            console.log(res);
+            $scope.categoriesList = res;
+        }, function (error) {
+
+        });
+    // get products by vendor
+    $scope.getProducts = function getProducts() {
+        vendorService.getProducts(vendor_sn).then(function (res) {
+            $scope.products = res.data;
+        });
+    };
+
+    // add product page view
+    $scope.addProductPageView = function addProductPageView() {
+        $scope.profilePageIndicator = false;
+        $scope.addProductPageIndicator = true;
+    };
+
+    // add product service
+    $scope.addProduct = function addProduct() {
+        vendorService.addProduct($scope.product).then(function (res) {
+        });
+    };
 }]);
 
