@@ -31,7 +31,17 @@ public class Customer{
     @Column(name = "FIRSTNAME", nullable = false)
     private String firstName;
     
-    @NotEmpty
+    private boolean approve;
+    
+    public boolean isApprove() {
+		return approve;
+	}
+
+	public void setApprove(boolean approve) {
+		this.approve = approve;
+	}
+
+	@NotEmpty
     @Size(min=3,max=25,message="{User.lastName.empty}")
     @Column(name = "LASTNAME", nullable = false)
     private String lastName;

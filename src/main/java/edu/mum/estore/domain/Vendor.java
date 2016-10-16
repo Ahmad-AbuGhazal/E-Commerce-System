@@ -36,6 +36,16 @@ public class Vendor {
 	@OneToOne(cascade=CascadeType.ALL)
 	private Address address;
 	
+	private boolean approve;
+	
+	public boolean isApprove() {
+		return approve;
+	}
+
+	public void setApprove(boolean approve) {
+		this.approve = approve;
+	}
+
 	@OneToOne(cascade=CascadeType.ALL)
 	private RequestedCard requestedCard;
 	

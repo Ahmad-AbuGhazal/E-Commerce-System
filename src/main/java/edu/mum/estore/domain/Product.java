@@ -23,6 +23,13 @@ public class Product {
 	private long productQuantity;
 	private long maxPerCustomer;
 	private long lockNumber;
+	private boolean approve;
+	public boolean isApprove() {
+		return approve;
+	}
+	public void setApprove(boolean approve) {
+		this.approve = approve;
+	}
 	@Column(length=3000)
 	private String description;
 	private String image_link;
