@@ -23,6 +23,7 @@ public class Product {
 	private long productQuantity;
 	private long maxPerCustomer;
 	private long lockNumber;
+	@Column(name = "approve", nullable = false, columnDefinition = "bit default 0")
 	private boolean approve;
 	public boolean isApprove() {
 		return approve;

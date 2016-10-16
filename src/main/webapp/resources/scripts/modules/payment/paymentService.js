@@ -31,4 +31,19 @@ rapp.service('paymentService', ['$http', '$q', function ($http, $q) {
         });
         return deferred.promise;
     };
+
+    this.detetePayment=function deletePayment(paymentId){
+   var deferred = $q.defer();
+        // call http service to get all payments
+        $http({
+            method: 'PUT',
+            url: '/estore/customers/' + customerId + '/payments'+'/'+paymentId
+        }).then(function (res) {
+            deferred.resolve(res);
+        }, function (error) {
+            deferred.reject(error);
+        });
+        return deferred.promise;
+    
+    };
 }]);

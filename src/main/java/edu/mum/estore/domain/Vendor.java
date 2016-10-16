@@ -36,6 +36,7 @@ public class Vendor {
 	@OneToOne(cascade=CascadeType.ALL)
 	private Address address;
 	
+	@Column(name = "approve", nullable = false, columnDefinition = "bit default 0")
 	private boolean approve;
 	
 	public boolean isApprove() {

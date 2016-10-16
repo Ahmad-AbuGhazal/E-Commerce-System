@@ -54,15 +54,18 @@ public ResponseInfo addPayment(@PathVariable("id") long id,@Valid@RequestBody Pa
 }
 
 @ResponseBody
-@RequestMapping(value="/customers/{id}/payments/{paymentId}",method=RequestMethod.GET)
-public void removePayment(@PathVariable("id") long customerId,@PathVariable("paymentId") long paymentId){
+@RequestMapping(value="/customers/{id}/payments/{paymentId}",method=RequestMethod.PUT)
+public  ResponseInfo removePayment(@PathVariable("id") long customerId,@PathVariable("paymentId") long paymentId){
+	ResponseInfo info=new ResponseInfo();
 	try
 	{
+	info.setResponse('Y');
 	paymentCardService.remove(paymentId);
 	}
 	catch(Exception ex){
 	throw new PaymentNotValidException("Payment Card Not Found");
 	}
+	return info;
 }
 @ResponseBody
 @RequestMapping(value="/customers/{id}/payments",method=RequestMethod.GET, produces="application/json")

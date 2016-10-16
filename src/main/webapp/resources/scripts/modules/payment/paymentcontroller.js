@@ -55,7 +55,16 @@ paymentService.addPayment(1,$scope.payment).then(function (res) {
 
 // delete payment 
 $scope.detetePayment = function deletePayment(id){
-
+paymentService.detetePayment(id).then(function (res) {
+         var response=res.data;
+          if(response.response=='Y'){
+          
+         }
+         else{
+         }
+   },function error(error){
+   
+   });
 };
 
 }]);
