@@ -2,6 +2,7 @@
     <div class="col-lg-2"></div>
     <div class="col-lg-10">
         <h1> Welcome User</h1>
+        <hr>
     </div>
 
 </div>
@@ -11,12 +12,8 @@
     <div class="col-lg-2">
 
         <ul class="nav nav-stacked">
-            <li><a href="/estore/#/customer/payments" target="ext"> payments</a>
-            <ul class="nav navbar">
-                <li> <a href="/estore/#/customer/addpayment"></a></li>
-            </ul>
-            
-            </li>
+            <li><a href="/estore/#/customer/payments" target="ext"> payments</a></li>
+            <li><a href="/estore/#/customer/addPayment" target="ext"> add Payment</a></li>
             <li><a href="/estore/#/customer/orders" target="ext"><i class="glyphicon glyphicon-list-alt"></i> Orders</a></li>
         </ul>
 
@@ -33,6 +30,7 @@
                         <th>Card Holder</th>
                         <th>Card Number</th>
                         <th>Expiration Date</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,7 +39,7 @@
                          <td>{{payment.cardHolder}}</td>
                          <td>{{payment.cardNum | visaFilter}}</td>
                          <td>{{payment.expiration | date}}</td>
-                          
+                        <td>  <button class="btn btn-primary" data-ng-click="detetePayment(payment.id)">delete</button></td>
                     </tr>
                 </tbody>
             </table>

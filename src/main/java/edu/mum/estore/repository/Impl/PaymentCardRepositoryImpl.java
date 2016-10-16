@@ -35,5 +35,16 @@ public class PaymentCardRepositoryImpl implements PaymentCardRepository {
 	Query query=enitiyManager.createQuery("SELECT p from PaymentCard p where p.customer.id=:id");
     return(List<PaymentCard>)query.setParameter("id", customerId).getResultList();
 	}
-
+	@Override
+	public PaymentCard getByCardNumber(String cardNumber) {
+	Query query=enitiyManager.createQuery("SELECT p from PaymentCard p where p.cardNum=:cardNumber");
+    PaymentCard card=null;
+    try{
+	card=(PaymentCard)query.setParameter("cardNumber", cardNumber).getSingleResult();
+	}
+    catch(Exception ex){
+    	card=null;
+    }
+    return card;
+}
 }

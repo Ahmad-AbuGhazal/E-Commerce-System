@@ -15,6 +15,10 @@ app.config(['$routeProvider', function ($routeProvider) {
         templateUrl:'resources/views/customer/payments.html',
         controller:'paymentCtrl'
         })
+        .when('/customer/addPayment',{
+        templateUrl:'resources/views/customer/addPayment.html',
+        controller:'paymentCtrl'
+        })
         .when('/customer/orders',{
         templateUrl:'resources/views/customer/orders.html',
         controller:'orderCtrl'

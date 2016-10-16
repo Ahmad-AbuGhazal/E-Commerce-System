@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.method.P;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import edu.mum.estore.domain.Customer;
 import edu.mum.estore.domain.Order;
 import edu.mum.estore.domain.OrderDetails;
 import edu.mum.estore.domain.PaymentCard;
+import edu.mum.estore.domain.ResponseInfo;
 import edu.mum.estore.exception.PaymentNotValidException;
 import edu.mum.estore.service.CustomerService;
 import edu.mum.estore.service.OrderService;
@@ -42,11 +44,13 @@ public Customer getProfile(@PathVariable("id") long id){
 
 
 @RequestMapping(value="/customers/{id}/payments",method=RequestMethod.POST)
-public void addPayment(@RequestParam("id") long id,@Valid@RequestBody PaymentCard card){
+public ResponseInfo addPayment(@PathVariable("id") long id,@Valid@RequestBody PaymentCard card){
+	ResponseInfo info=new ResponseInfo();
 	Customer customer=customerService.get(id);
 	card.setCustomer(customer);
 	paymentCardService.save(card);
-	
+	info.setResponse('Y');
+	return info;
 }
 
 @ResponseBody

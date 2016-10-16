@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import edu.mum.estore.exception.PaymentNotValidException;
@@ -20,7 +21,8 @@ public class EstoreExceptionHandler {
 	
 	@ExceptionHandler(PaymentNotValidException.class)
 	@ResponseStatus(code=HttpStatus.INTERNAL_SERVER_ERROR)
-	public ResponseEntity<String> handleException(RuntimeException ex) {
-		return new ResponseEntity<String>(ex.getMessage(), HttpStatus.OK);
+	public @ResponseBody DomainError handleException(PaymentNotValidException ex) {
+		DomainError error = new DomainError(ex.getMessage());
+		return error;
 	}
 }

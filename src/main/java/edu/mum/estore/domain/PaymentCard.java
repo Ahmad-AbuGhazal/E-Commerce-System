@@ -25,13 +25,8 @@ public class PaymentCard {
 
 	private Date expiration;
 
-	private float maxCredit;
 
-	private float availableCredit;
-
-	private boolean status;
-
-	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@ManyToOne(cascade=CascadeType.MERGE,fetch=FetchType.EAGER)
 	@JoinColumn(name = "CUS_ID")
 	Customer customer;
 
@@ -73,30 +68,6 @@ public class PaymentCard {
 
 	public void setExpiration(Date expiration) {
 		this.expiration = expiration;
-	}
-
-	public float getMaxCredit() {
-		return maxCredit;
-	}
-
-	public void setMaxCredit(float maxCredit) {
-		this.maxCredit = maxCredit;
-	}
-
-	public float getAvailableCredit() {
-		return availableCredit;
-	}
-
-	public void setAvailableCredit(float availableCredit) {
-		this.availableCredit = availableCredit;
-	}
-
-	public boolean isStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
 	}
 
 	public Customer getCustomer() {

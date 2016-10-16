@@ -127,6 +127,7 @@
 
     <script src="resources/scripts/modules/payment/cardFilter.js"></script>
     <script src="resources/scripts/modules/payment/paymentService.js"></script>
+    <script src="resources/scripts/modules/payment/directives/creditDirective.js"></script>
     <script src="resources/scripts/modules/payment/paymentcontroller.js"></script>
     
     

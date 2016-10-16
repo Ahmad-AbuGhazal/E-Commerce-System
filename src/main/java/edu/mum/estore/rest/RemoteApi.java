@@ -1,10 +1,6 @@
 package edu.mum.estore.rest;
 
-import java.nio.charset.Charset;
-
 import java.util.Collections;
-
-import org.apache.commons.codec.binary.Base64;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -33,16 +29,10 @@ public class RemoteApi {
 	*/
 	public HttpHeaders getHttpHeaders() {
 
-      String auth = "admin1" + ":" + "admin1";
-        byte[] encodedAuth = Base64.encodeBase64( 
-        auth.getBytes(Charset.forName("US-ASCII")) );
-       String authHeader = "Basic " + new String( encodedAuth );
-	
-		HttpHeaders requestHeaders = new HttpHeaders();
+         HttpHeaders requestHeaders = new HttpHeaders();
 		requestHeaders.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
 		requestHeaders.setContentType(MediaType.APPLICATION_JSON);
-		requestHeaders.set("Authorization", authHeader);
-		return requestHeaders;
+			return requestHeaders;
 	}
 
 	public HttpEntity<?> getHttpEntity() {
