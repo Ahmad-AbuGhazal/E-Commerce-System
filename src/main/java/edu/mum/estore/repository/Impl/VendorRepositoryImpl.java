@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.mum.estore.domain.Vendor;
@@ -30,4 +29,5 @@ public class VendorRepositoryImpl implements VendorRepository {
 	public List<Vendor> getVendors() {
 		return null;
 	}
+
 }

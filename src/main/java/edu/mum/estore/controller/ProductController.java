@@ -65,9 +65,11 @@ public class ProductController {
 
 		ResponseInfo info = new ResponseInfo();
 		if (result.hasErrors()) {
+			product.setApprove(false);
 			info.setResponse('N');
-
 		}
+		
+		product.setApprove(true);
 		productService.addProduct(product);
 		info.setResponse('Y');
 		return info;

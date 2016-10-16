@@ -59,5 +59,4 @@ public class ProductRepositoryImpl implements ProductRepository{
 		query.setParameter("productId", product.getProductId()).setParameter("lockNumber", product.getLockNumber()).executeUpdate();
         return product;
 	}
-
 }
