@@ -44,4 +44,18 @@ rapp.service('vendorService', ['$http', '$q', function ($http, $q) {
         });
         return deferred.promise;
     };
+
+     this.getCategories = function getCategories() {
+        var deferred = $q.defer();
+        // call http service to get vendor infromation
+        $http({
+            method: 'GET',
+            url: '/estore/categories'
+        }).then(function (res) {
+            deferred.resolve(res);
+        }, function (error) {
+            deferred.reject(error);
+        });
+        return deferred.promise;
+    };
 }]);

@@ -1,4 +1,4 @@
-rapp.controller('vendorCtrl', ['$scope', '$q', '$location', '$http', 'vendorService', 'searchService', function ($scope, $q, $location, $http, vendorService, searchService) {
+rapp.controller('vendorCtrl', ['$scope', '$q', '$location', '$http', 'vendorService', function ($scope, $q, $location, $http, vendorService) {
 
     // get vendor profile
 
@@ -23,10 +23,10 @@ rapp.controller('vendorCtrl', ['$scope', '$q', '$location', '$http', 'vendorServ
 
     }
     //get categories
-    searchService.getCategories()
+    vendorService.getCategories()
         .then(function (res) {
             console.log(res);
-            $scope.categoriesList = res;
+            $scope.categoriesList = res.data.data.data;
         }, function (error) {
 
         });
