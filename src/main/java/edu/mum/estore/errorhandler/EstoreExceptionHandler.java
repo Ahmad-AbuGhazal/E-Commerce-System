@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import edu.mum.estore.exception.CustomerNotFoundException;
 import edu.mum.estore.exception.PaymentNotValidException;
 
 @ControllerAdvice
@@ -22,6 +23,13 @@ public class EstoreExceptionHandler {
 	@ExceptionHandler(PaymentNotValidException.class)
 	@ResponseStatus(code=HttpStatus.INTERNAL_SERVER_ERROR)
 	public @ResponseBody DomainError handleException(PaymentNotValidException ex) {
+		DomainError error = new DomainError(ex.getMessage());
+		return error;
+	}
+	
+	@ExceptionHandler(CustomerNotFoundException.class)
+	@ResponseStatus(code=HttpStatus.INTERNAL_SERVER_ERROR)
+	public @ResponseBody DomainError handleException(CustomerNotFoundException ex) {
 		DomainError error = new DomainError(ex.getMessage());
 		return error;
 	}
