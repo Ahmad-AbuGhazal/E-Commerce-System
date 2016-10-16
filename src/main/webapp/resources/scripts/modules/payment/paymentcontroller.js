@@ -14,6 +14,8 @@ $scope.year='';
   $scope.addPaymentMessage=false;
   $scope.addPaymentMessageError=false;
   $scope.errorPaymentForm='';
+  $scope.paymentDeleted='The Payment Sucsessfully deleted';
+  $scope.paymentDeletedIndicator=false;
 paymentService.getPayments(1)
 .then(function (res) {
           $scope.payments=res.data;
@@ -54,8 +56,24 @@ paymentService.addPayment(1,$scope.payment).then(function (res) {
 
 
 // delete payment 
-$scope.detetePayment = function deletePayment(id){
-
+$scope.detetePayment = function deletePayment(customerId,paymentId){
+paymentService.detetePayment(customerId,paymentId).then(function (res) {
+         var response=res.data;
+          if(response.response=='Y'){
+          $scope.paymentDeletedIndicator=true;
+          getPaymentsLocal();
+         }
+         else{
+         }
+   },function error(error){
+   
+   });
 };
 
+function getPaymentsLocal(){
+  paymentService.getPayments(1)
+.then(function (res) {
+          $scope.payments=res.data;
+   });
+}
 }]);

@@ -22,6 +22,9 @@ app.config(['$routeProvider', function ($routeProvider) {
         .when('/customer/orders',{
         templateUrl:'resources/views/customer/orders.html',
         controller:'orderCtrl'
+        }).when('/vendor/dashboard', {
+            templateUrl: 'resources/views/vendor/profile.html',
+            controller:'vendorCtrl'
         })
         .when('/vendor/register', {
             templateUrl: 'resources/views/vendor-registration.html',

@@ -31,6 +31,7 @@ public class Customer{
     @Column(name = "FIRSTNAME", nullable = false)
     private String firstName;
     
+	@Column(name = "approve", nullable = false, columnDefinition = "bit default 0")
     private boolean approve;
     
     public boolean isApprove() {

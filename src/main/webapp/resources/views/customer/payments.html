@@ -39,13 +39,15 @@
                          <td>{{payment.cardHolder}}</td>
                          <td>{{payment.cardNum | visaFilter}}</td>
                          <td>{{payment.expiration | date}}</td>
-                        <td>  <button class="btn btn-primary" data-ng-click="detetePayment(payment.id)">delete</button></td>
+                        <td>  <button class="btn btn-primary" data-ng-click="detetePayment(payment.customer.id,payment.id)">delete</button></td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
     </div>
+     <div class="col-sm-offset-2 col-sm-5 alert alert-success" ng-show="paymentDeletedIndicator" role="alert"> <strong>Well done!</strong> {{paymentDeleted}} </div>
+     
     <div class="col-lg-1"></div>
 
 </div>
