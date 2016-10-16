@@ -48,8 +48,7 @@ public class VendorServiceImpl implements VendorService {
 
 	@Override
 	public Vendor searchVendor(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return vendorRepository.searchVendor(id);
 	}
 
 	@Override

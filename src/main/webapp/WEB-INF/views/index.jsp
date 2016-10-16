@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html >
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -45,15 +45,16 @@
 
                         </a>
                     </script>
-                    <input type="text" class="form-control" placeholder="Search..." ng-model="searchQuery" ng-change="search()"
-                            id='searchBox' uib-typeahead="product as product.productName for product in searchData | filter:{productName:$viewValue} | limitTo:10" typeahead-show-hint="true" typeahead-on-select="mo($item, $model, $label, $event)"
-                           typeahead-template-url="searchTemplate1.html" ng-keypress="searchEnter($event)">
-        
-                    
+                    <input type="text" class="form-control" placeholder="Search..." ng-model="searchQuery" ng-change="search()" id='searchBox'
+                        uib-typeahead="product as product.productName for product in searchData | filter:{productName:$viewValue} | limitTo:10"
+                        typeahead-show-hint="true" typeahead-on-select="mo($item, $model, $label, $event)" typeahead-template-url="searchTemplate1.html"
+                        ng-keypress="searchEnter($event)">
+
+
                     <span class="input-group-btn">
                             <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"
                                       ng-click="searchClick()"></span> Search</button>
-                    </span> 
+                    </span>
                 </div>
             </div>
 
@@ -104,11 +105,12 @@
 
 
 
-    <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
     <script>
         jquery = $.noConflict();
     </script>
-    
+
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="https://code.angularjs.org/1.5.8/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
@@ -116,7 +118,7 @@
     <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.2.0.js"></script>
     <script src="resources/scripts/routehandler.js"></script>
     <script src="resources/scripts/indexController.js"></script>
-     <script src="resources/scripts/regService.js"></script>
+    <script src="resources/scripts/regService.js"></script>
     <script src="resources/scripts/regCtrl.js"></script>
     <script src="resources/scripts/searchService.js"></script>
     <script src="resources/scripts/productsCtrl.js"></script>
@@ -129,16 +131,20 @@
     <script src="resources/scripts/modules/payment/paymentService.js"></script>
     <script src="resources/scripts/modules/payment/directives/creditDirective.js"></script>
     <script src="resources/scripts/modules/payment/paymentcontroller.js"></script>
-    
-    
+
+
     <!-- Order module -->
- <script src="resources/scripts/modules/order/orderService.js"></script>
+    <script src="resources/scripts/modules/order/orderService.js"></script>
     <script src="resources/scripts/modules/order/orderController.js"></script>
-   
+
+    <!-- vendor module -->
+    <script src="resources/scripts/modules/vendor/directives/profileDirective.js"></script>
+    <script src="resources/scripts/modules/vendor/vendorService.js"></script>
+    <script src="resources/scripts/modules/vendor/vendorController.js"></script>
 
     <script src="resources/styles/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script src="resources/scripts/slick/slick.min.js"></script>
-   
+
 </body>
 
 </html>

@@ -33,6 +33,16 @@ public class Vendor {
 	@Column(name="OWNER_NAME")
 	private String owner_name;
 	
+	private String email;
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	@OneToOne(cascade=CascadeType.ALL)
 	private Address address;
 	
