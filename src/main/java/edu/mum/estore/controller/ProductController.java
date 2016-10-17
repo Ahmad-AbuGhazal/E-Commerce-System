@@ -1,5 +1,6 @@
 package edu.mum.estore.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,9 +42,13 @@ public class ProductController {
 	@ResponseBody
 	@ResponseStatus(value = HttpStatus.OK)
 	@RequestMapping(value = "/products/{id}", method = RequestMethod.GET,produces="application/json")
-	public Product searchProductById(@PathVariable("id") long productId) {
+	public JsonResponse<Product> searchProductById(@PathVariable("id") long productId) {
+		JsonResponse<Product> response = new JsonResponse<Product>();
+		List<Product> list = new ArrayList<>();
 		Product product=productService.get(productId);
-		return product;
+		list.add(product);
+		response.setData(list);
+		return response;
 	}
 	
 	@ResponseBody

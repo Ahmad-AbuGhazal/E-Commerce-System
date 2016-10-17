@@ -9,7 +9,7 @@
             <p>by <a href=""><span class="details-vendorName">{{productDetails.vendor.vendor_name}}</span></a></p>
             <p class="details-price">{{productDetails.productPrice | currency}}</p>
             <p>{{productDetails.description}}</p>
-            <a href="#" class="btn btn-warning" role="button">Add to cart</a>
+            <button href="#" class="btn btn-warning" role="button" ng-click="addCart(productDetails.productId)">Add to cart</button>
         </div>
     </div>
     <hr>
@@ -25,7 +25,7 @@
                             <p>{{productb.productPrice | currency}}</p>
                             <p>
                                 <a href="#/productDetail/{{productb.productId}}" class="btn btn-info" role="button">Details</a>
-                                <a href="#" class="btn btn-warning" role="button">Add to cart</a>
+                                <button class="btn btn-warning" role="button" ng-click="addCart(productb.productId)">Add to cart</button>
                             </p>
                         </div>
                     </div>

@@ -8,7 +8,6 @@ public class HomeController {
 
 	@RequestMapping(value="/")
 	public String homePage(){
-		System.out.println("Welcome");
 		return "index";
 	}
 }

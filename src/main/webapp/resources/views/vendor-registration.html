@@ -1,252 +1,247 @@
 <div class="row">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-10">
-        <div class="panel panel-primary">
-            <div class="panel panel-heading">Registration</div>
-            <div class="panel panel-body">
-                <ul class="nav nav-tabs nav-justified">
-                    <li role="presentation" class="active"><a href="#general" role="tab" data-toggle="tab" target="_self">General Details</a></li>
-                    <li role="presentation"><a href="#user-details" role="tab" data-toggle="tab" target="_self">User Details</a></li>
-                    <li role="presentation"><a href="#payment-details" role="tab" data-toggle="tab" target="_self">Payment Details</a></li>
-                </ul>
+	<div class="col-lg-1"></div>
+	<div class="col-lg-10">
+		<div class="panel panel-primary">
+			<div class="panel panel-heading">Registration</div>
+			<div class="panel panel-body">
+				<ul class="nav nav-tabs nav-justified">
+					<li role="presentation" class="active"><a href="#general"
+						role="tab" data-toggle="tab" target="_self">General Details</a></li>
+					<li role="presentation"><a href="#user-details" role="tab"
+						data-toggle="tab" target="_self">User Details</a></li>
+					<li role="presentation"><a href="#payment-details" role="tab"
+						data-toggle="tab" target="_self">Payment Details</a></li>
+				</ul>
 
-                <br>
-                
-                <div class="tab-content">
+				<br>
+				<form name="regForm">
+					<div class="tab-content">
 
-                    <div role="tabpanel" class="tab-pane active" id="general">
-                        <div class="row">
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-2">
-                                Email:
-                            </div>
-                            <div class="col-lg-5">
-                                <input ng-model="regData.credDetails.email" class="form-control" required>
-                                
-                            </div>
-                            
-                            <div class="col-lg-3"></div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-2">
-                                Password:
-                            </div>
-                            <div class="col-lg-5">
-                                <input type="password" ng-model="regData.credDetails.password1" class="form-control" required>
-                            </div>
-                            <div class="col-lg-3"></div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-2">
-                                Confirm Password:
-                            </div>
-                            <div class="col-lg-5">
-                                <input type="password" ng-model="regData.credDetails.password2" class="form-control" required>
-                            </div>
-                            <div class="col-lg-3"></div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-2">
-                                Street: 
-                            </div>
-                            <div class="col-lg-5">
-                                <input ng-model="regData.userDetails.street" class="form-control" required>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-2">
-                                City:
-                            </div>
-                            <div class="col-lg-5">
-                                <input ng-model="regData.userDetails.city" class="form-control" required>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-2">
-                                State:
-                            </div>
-                            <div class="col-lg-2">
-                                <input ng-model="regData.userDetails.state" class="form-control" required>
-                            </div>
+						<div role="tabpanel" class="tab-pane active" id="general">
+							<div class="row">
+								<div class="col-lg-1"></div>
+								<div class="col-lg-2">Email:</div>
+								<div class="col-lg-5">
+									<input name="email" ng-model="regData.credDetails.email"
+										class="form-control" required type="email"> <span
+										style="color: red;" ng-show="regForm.email.$dirty && regForm.email.$invalid">
+										<span ng-show="regForm.email.$error.required">Email is required</span>
+										<span ng-show="regForm.email.$error.email">Invalid email
+											address.</span>
+									</span>
+								</div>
 
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-1">
-                                Zip:
-                            </div>
-                            <div class="col-lg-2">
-                                <input ng-model="regData.userDetails.zipcode" class="form-control" required>
-                            </div>
-                            <div class="col-lg-1"></div>
-                        </div>
-                        <br>
+								<div class="col-lg-3"></div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-lg-1"></div>
+								<div class="col-lg-2">Password:</div>
+								<div class="col-lg-5">
+									<input type="password" ng-model="regData.credDetails.password1"
+										class="form-control" required>
+								</div>
+								<div class="col-lg-3"></div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-lg-1"></div>
+								<div class="col-lg-2">Confirm Password:</div>
+								<div class="col-lg-5">
+									<input type="password" ng-model="regData.credDetails.password2"
+										class="form-control" required>
+								</div>
+								<div class="col-lg-3"></div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-lg-1"></div>
+								<div class="col-lg-2">Street:</div>
+								<div class="col-lg-5">
+									<input ng-model="regData.userDetails.street"
+										class="form-control" required>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-lg-1"></div>
+								<div class="col-lg-2">City:</div>
+								<div class="col-lg-5">
+									<input ng-model="regData.userDetails.city" class="form-control"
+										required>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-lg-1"></div>
+								<div class="col-lg-2">State:</div>
+								<div class="col-lg-2">
+									<input ng-model="regData.userDetails.state"
+										class="form-control" required>
+								</div>
 
-                        <div class="row">
-                            <div class="col-lg-2 col-lg-offset-10">
-                                <button type="button" class="btn btn-primary" ng-click="register()">Next <span class="glyphicon glyphicon-chevron-right"></span></button>
-                            </div>
-                        </div>
+								<div class="col-lg-1"></div>
+								<div class="col-lg-1">Zip:</div>
+								<div class="col-lg-2">
+									<input ng-model="regData.userDetails.zipcode"
+										class="form-control" required>
+								</div>
+								<div class="col-lg-1"></div>
+							</div>
+							<br>
 
-                    </div>
-                    <!-- general details end -->
+							<div class="row">
+								<div class="col-lg-2 col-lg-offset-10">
+									<button type="button" class="btn btn-primary"
+										ng-click="register()">
+										Next <span class="glyphicon glyphicon-chevron-right"></span>
+									</button>
+								</div>
+							</div>
 
-
-                    <div role="tabpanel" class="tab-pane" id="user-details">
-                        <div class="row">
-                            <div class="row">
-                                <div class="col-lg-1"></div>
-                                <div class="col-lg-2">
-                                    User Type: {{regData.userDetails.userType}}
-                                </div>
-                                <div class="col-lg-5">
-                                    <input type="radio" name="usertype" value="Vendor" checked ng-model="regData.userDetails.userType"> Vendor
-                                    &nbsp;&nbsp;
-                                    <input type="radio" name="usertype" value="Customer" ng-model="regData.userDetails.userType"> Customer
-                                </div>
-                            </div>
-
-                            <br>
-                            <!-- vendor details-->
-                            <div class="col-lg-6">
-                                <div class="well">
-                                    <div class="row">
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-3">
-                                            Company Id:
-                                        </div>
-                                        <div class="col-lg-7">
-                                            <input ng-model="regData.userDetails.vendorId" class="form-control" >
-                                        </div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-3">
-                                            Company Name: 
-                                        </div>
-                                        <div class="col-lg-7">
-                                            <input ng-model="regData.userDetails.vendorName" class="form-control" >
-                                        </div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-3">
-                                            Owner Name:
-                                        </div>
-                                        <div class="col-lg-7">
-                                            <input ng-model="regData.userDetails.ownerName" class="form-control">
-                                        </div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- vendor details end -->
-
-                            <!-- customer details-->
-                            <div class="col-lg-6">
-                                <div class="well">
-                                    <div class="row">
-                                        <div class="col-lg-1"></div>
-                                        <div class="col-lg-4">
-                                            Customer Name:
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <input ng-model="confirmPassword" class="form-control">
-                                        </div>
-                                        <div class="col-lg-1"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- customer details end -->
-                        </div>
-                    </div>
-                    <!-- user details end -->
+						</div>
+						<!-- general details end -->
 
 
+						<div role="tabpanel" class="tab-pane" id="user-details">
+							<div class="row">
+								<div class="row">
+									<div class="col-lg-1"></div>
+									<div class="col-lg-2">User Type:
+										{{regData.userDetails.userType}}</div>
+									<div class="col-lg-5">
+										<input type="radio" name="usertype" value="Vendor" checked
+											ng-model="regData.userDetails.userType"> Vendor
+										&nbsp;&nbsp; <input type="radio" name="usertype"
+											value="Customer" ng-model="regData.userDetails.userType">
+										Customer
+									</div>
+								</div>
 
-                    <div role="tabpanel" class="tab-pane" id="payment-details">
-                        <div class="row">
-                            <div class="row">
-                                <div class="col-lg-1"></div>
-                                <div class="col-lg-2">
-                                    Card Type:
-                                </div>
-                                <div class="col-lg-5">
-                                    <input type="radio" name="usertype" value="MasterCard" checked ng-model="regData.cardDetails.cardType"> MasterCard  &nbsp;&nbsp;
-                                    <input type="radio" name="usertype" value="VISA" ng-model="regData.cardDetails.usertype"> VISA
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-lg-1"></div>
-                                <div class="col-lg-2">
-                                    Card Holder Name:
-                                </div>
-                                <div class="col-lg-5">
-                                    <input ng-model="regData.cardDetails.cardHolder" class="form-control">
-                                </div>
-                                <div class="col-lg-3"></div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-lg-1"></div>
-                                <div class="col-lg-2">
-                                    Credit Card Number:
-                                </div>
-                                <div class="col-lg-5">
-                                    <input ng-model="regData.cardDetails.cardNum" class="form-control">
-                                </div>
-                                <div class="col-lg-3"></div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-lg-1"></div>
-                                <div class="col-lg-2">
-                                    Security Code:
-                                </div>
-                                <div class="col-lg-2">
-                                    <input ng-model="regData.cardDetails.securityCode" class="form-control">
-                                </div>
-                                <div class="col-lg-5"></div>
-                            </div>
-                            <br>
+								<br>
+								<!-- vendor details-->
+								<div class="col-lg-6">
+									<div class="well">
+										<div class="row">
+											<div class="col-lg-1"></div>
+											<div class="col-lg-3">Company Id:</div>
+											<div class="col-lg-7">
+												<input ng-model="regData.userDetails.vendorId"
+													class="form-control">
+											</div>
+											<div class="col-lg-1"></div>
+										</div>
+										<br>
+										<div class="row">
+											<div class="col-lg-1"></div>
+											<div class="col-lg-3">Company Name:</div>
+											<div class="col-lg-7">
+												<input ng-model="regData.userDetails.vendorName"
+													class="form-control">
+											</div>
+											<div class="col-lg-1"></div>
+										</div>
+										<br>
+										<div class="row">
+											<div class="col-lg-1"></div>
+											<div class="col-lg-3">Owner Name:</div>
+											<div class="col-lg-7">
+												<input ng-model="regData.userDetails.ownerName"
+													class="form-control">
+											</div>
+											<div class="col-lg-1"></div>
+										</div>
+									</div>
+								</div>
+								<!-- vendor details end -->
 
-                            <div class="row">
-                                <div class="col-lg-1"></div>
-                                <div class="col-lg-2">
-                                    Expiration Date:
-                                </div>
-                                <div class="col-lg-1">
-                                    <input ng-model="regData.cardDetails.month" class="form-control" placeholder="month">
-                                </div>
-                                <div class="col-lg-1">
-                                    <input ng-model="regData.cardDetails.year" class="form-control" placeholder="year">
-                                </div>
-                                <div class="col-lg-6"></div>
-                            </div>
-                            <br>
-                        </div>
-                        <!-- payment details end -->
-                    </div>
-                </div>
-                <!-- panel body end -->
-            </div>
-        </div>
-        <div class="col-lg-1"></div>
+								<!-- customer details-->
+								<div class="col-lg-6">
+									<div class="well">
+										<div class="row">
+											<div class="col-lg-1"></div>
+											<div class="col-lg-4">Customer Name:</div>
+											<div class="col-lg-6">
+												<input ng-model="confirmPassword" class="form-control">
+											</div>
+											<div class="col-lg-1"></div>
+										</div>
+									</div>
+								</div>
+								<!-- customer details end -->
+							</div>
+						</div>
+						<!-- user details end -->
 
 
-    </div>
-    
-    
+
+						<div role="tabpanel" class="tab-pane" id="payment-details">
+							<div class="row">
+								<div class="row">
+									<div class="col-lg-1"></div>
+									<div class="col-lg-2">Card Type:</div>
+									<div class="col-lg-5">
+										<input type="radio" name="usertype" value="MasterCard" checked
+											ng-model="regData.cardDetails.cardType"> MasterCard
+										&nbsp;&nbsp; <input type="radio" name="usertype" value="VISA"
+											ng-model="regData.cardDetails.usertype"> VISA
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-lg-1"></div>
+									<div class="col-lg-2">Card Holder Name:</div>
+									<div class="col-lg-5">
+										<input ng-model="regData.cardDetails.cardHolder"
+											class="form-control">
+									</div>
+									<div class="col-lg-3"></div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-lg-1"></div>
+									<div class="col-lg-2">Credit Card Number:</div>
+									<div class="col-lg-5">
+										<input ng-model="regData.cardDetails.cardNum"
+											class="form-control">
+									</div>
+									<div class="col-lg-3"></div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-lg-1"></div>
+									<div class="col-lg-2">Security Code:</div>
+									<div class="col-lg-2">
+										<input ng-model="regData.cardDetails.securityCode"
+											class="form-control">
+									</div>
+									<div class="col-lg-5"></div>
+								</div>
+								<br>
+
+								<div class="row">
+									<div class="col-lg-1"></div>
+									<div class="col-lg-2">Expiration Date:</div>
+									<div class="col-lg-1">
+										<input ng-model="regData.cardDetails.month"
+											class="form-control" placeholder="month">
+									</div>
+									<div class="col-lg-1">
+										<input ng-model="regData.cardDetails.year"
+											class="form-control" placeholder="year">
+									</div>
+									<div class="col-lg-6"></div>
+								</div>
+								<br>
+							</div>
+							<!-- payment details end -->
+						</div>
+					</div>
+					<!-- panel body end -->
+				</form>
+			</div>
+		</div>
+		<div class="col-lg-1"></div>
+
+
+	</div>

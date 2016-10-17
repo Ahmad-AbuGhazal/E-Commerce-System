@@ -18,6 +18,10 @@ public class ShoppingCard {
 		return products;
 	}
 	
+	public void setProduct(List<Product> products) {
+		this.products=products;
+	}
+	
 	public void addProduct(Product product,long quantity){
 		
 		long lockNumber=product.getLockNumber()+quantity;

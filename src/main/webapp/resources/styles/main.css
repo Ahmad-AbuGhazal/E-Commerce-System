@@ -33,3 +33,37 @@ text-indent: -9999px;
 .details-border img{
     margin-top: 10px;
 }
+
+#shoppingcart-th{
+    margin-left: 800px;
+    margin-bottom: 0;
+}
+
+#shoppingcart-quantities{
+    margin-left: 0px;
+}
+
+#shoppingcart-tophr{
+    margin-top: 0;
+}
+
+#shoppingcart-itemPrice{
+    font-size: 80%;
+    color: red;
+    margin-left: 0px;
+}
+
+#shoppingcart-itemQuantities{
+    font-size: 80%;
+    margin-left: 0px;
+}
+
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 100%;
+      margin: auto;
+  }
+  
+  .carousel-control {
+  width:5%;
+  }

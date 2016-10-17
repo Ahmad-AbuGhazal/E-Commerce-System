@@ -32,10 +32,13 @@ app.config(['$routeProvider', function ($routeProvider) {
         }).when('/productDetail/:id', {
             templateUrl: 'resources/views/productDetails.html',
             controller: 'productDetailCtrl'
+    }).when('/mycart', {
+    	templateUrl : 'resources/views/mycart.html',
+    	controller : 'cartCtrl'
     })
         .otherwise({
-            templateUrl: '../views/hotdeals.html'
+            templateUrl: 'resources/views/hotdeals.html'
         });
 }]);
 
-var rapp = angular.module('rapp', []);
+var rapp = angular.module('rapp', ['ngCookies']);

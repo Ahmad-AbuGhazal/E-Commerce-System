@@ -35,6 +35,9 @@ public class Product {
 	private String description;
 	private String image_link;
 	
+	@Transient
+	private long purchaseQty=0;
+	
 	public String getImage_link() {
 		return image_link;
 	}
@@ -112,6 +115,13 @@ public class Product {
 	}
 	public void setProductQuantity(long productQuantity) {
 		this.productQuantity = productQuantity;
+	}
+	
+	public String printAsString() {
+		return "Product [productId=" + productId + ", productName=" + productName + ", productPrice=" + productPrice
+				+ ", productQuantity=" + productQuantity + ", maxPerCustomer=" + maxPerCustomer + ", lockNumber="
+				+ lockNumber + ", approve=" + approve + ", description=" + description + ", image_link=" + image_link
+				+ ", productImage=" + productImage + ", vendor=" + vendor + ", category=" + category + "]";
 	}
 	
 	

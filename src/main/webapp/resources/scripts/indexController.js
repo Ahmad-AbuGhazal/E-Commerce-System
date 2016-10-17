@@ -10,7 +10,7 @@ app.controller('indexCtrl',['$scope','$location','$q','$http','searchService','m
 	.then(function() {
 		$scope.catList = memService.getCatList();
 	}, function(error){
-		
+		console.log(error);
 	});
     
     $scope.typeaheadClick=function(searchName) {

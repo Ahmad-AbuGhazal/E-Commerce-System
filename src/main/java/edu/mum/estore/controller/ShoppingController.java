@@ -3,15 +3,14 @@ package edu.mum.estore.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.mum.estore.domain.Customer;
+import edu.mum.estore.domain.JsonResponse;
 import edu.mum.estore.domain.Product;
 import edu.mum.estore.domain.ResponseInfo;
 import edu.mum.estore.domain.ShoppingCard;
@@ -26,7 +25,7 @@ public class ShoppingController {
 	@Autowired
 	ProductService ProductService;
 	@ResponseBody
-	@RequestMapping(value = "/shopping/{productid}/{quanity}")
+	@RequestMapping(value = "/shopping/{productid}/{quantity}")
 	public ResponseInfo addProductsToTheSoppingCart(@PathVariable("productid") long productId,
 			@PathVariable("quantity") long quantity) {
 		ResponseInfo info = new ResponseInfo();
@@ -44,27 +43,31 @@ public class ShoppingController {
 	
 	
 	@ResponseBody
-	@RequestMapping(value = "/shopping/{productid}/{quantity}", method=RequestMethod.PUT)
+	@RequestMapping(value = "/shopping/remove/{productid}/{quantity}", method=RequestMethod.GET)
 	public ResponseInfo removeProductsToTheSoppingCart(@PathVariable("productid") long productId, @PathVariable("quantity") long quantity) {
 		ResponseInfo info = new ResponseInfo();
 		Product product = ProductService.get(productId);
 			shoppingCardService.removeProduct(product,quantity);
-			info.setResponse('Y');
-			return info;
+		info.setResponse('Y');
+		return info;
 	}
 	
 	
     @ResponseBody
 	@RequestMapping(value = "/shopping/products")
-	public List<Product> getProdcucts() {
+	public JsonResponse<Product> getProdcucts() {
+    	JsonResponse<Product> response = new JsonResponse<Product>();
 		List<Product> products = shoppingCardService.getProduct();
-		return products;
+		response.setData(products);
+		return response;
 	}
     
     @ResponseBody
-  	@RequestMapping(value = "/shopping/processtoCheckout")
-  	public void checkout() { 
-    	
+  	@RequestMapping(value = "/shopping/processtoCheckout", method=RequestMethod.POST,
+  						consumes="application/json")
+  	public void checkout(@RequestBody JsonResponse<Product> cart) { 
+    	for(Product p : cart.getData())
+    		System.out.println(p.printAsString());
     	// input is 
     	//Step 1 : check if the customer is login to the system
     	//Step 2 : check if the user have payment card

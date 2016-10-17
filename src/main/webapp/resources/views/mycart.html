@@ -1,0 +1,116 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-2">
+			<h2>Your Cart</h2>
+		</div>
+		<div class="col-md-2 col-md-offset-8">
+			<button class="btn btn-primary" ng-click="checkout()">
+				<span class="glyphicon glyphicon-check"></span> Checkout
+			</button>
+		</div>
+	</div>
+</div>
+<div class="container" ng-show="productDetails==null && cart.length==0">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="alert alert-warning" role="alert">Your shopping
+				cart is empty!</div>
+		</div>
+	</div>
+</div>
+<div class="container" ng-show="productDetails!=null">
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-9">
+			<div class="col-md-5"></div>
+			<div class="col-md-2">
+				<span id="shoppingcart-price">Price</span>
+			</div>
+			<div class="col-md-2">
+				<span id="shoppingcart-quantities">Quantity</span>
+			</div>
+		</div>
+	</div>
+	<hr id="shoppingcart-tophr">
+	<div class="row">
+		<div class="col-md-3">
+			<a href=""><img width="200px" height="200px"
+				ng-src="{{productDetails.image_link}}" alt="Product image"></a>
+		</div>
+		<div class="col-md-9">
+			<div class="row">
+
+				<div class="col-md-5">
+					<a ng-href="#/productDetail/{{productDetails.productId}}">{{productDetails.productName}}</a>
+				</div>
+				<div class="col-md-2">
+					<span>{{productDetails.productPrice}}</span>
+				</div>
+				<div class="col-md-2">
+					<select ng-model="qty" ng-options="i as i for i in selVals"></select>
+				</div>
+			</div>
+
+			<h5>by {{productDetails.vendor.vendor_name}}</h5>
+			<h5>In {{productDetails.productQuantity}}</h5>
+			<h5>
+				<button class="btn btn-warning" ng-click="addCart()">Confirm
+					Add</button>
+				<button class="btn btn-warning"
+					ng-click="removeCart(productDetails.productId, qty)">Delete</button>
+			</h5>
+		</div>
+	</div>
+</div>
+
+<div class="container" ng-show="cart.length>0">
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-9">
+			<div class="col-md-5"></div>
+			<div class="col-md-2">
+				<span id="shoppingcart-price">Price</span>
+			</div>
+			<div class="col-md-2">
+				<span id="shoppingcart-quantities">Quantity</span>
+			</div>
+		</div>
+	</div>
+	<hr id="shoppingcart-tophr">
+	<ul style="list-style-type: none;">
+		<li ng-repeat="item in cart">
+			<div class="row">
+				<div class="col-md-3">
+					<a href=""><img width="200px" height="200px"
+						ng-src="{{item.image_link}}" alt="Product image"></a>
+				</div>
+				<div class="col-md-9">
+					<div class="row">
+
+						<div class="col-md-5">
+							<a ng-href="#/productDetail/{{item.productId}}">{{item.productName}}</a>
+						</div>
+						<div class="col-md-2">
+							<span>{{item.productPrice | currency}}</span>
+						</div>
+						<div class="col-md-2">
+							<select ng-model="item.purchaseQty" 
+								ng-options="i as i for i in selVals"></select>
+						</div>
+					</div>
+
+					<h5>by {{item.vendor.vendor_name}}</h5>
+					<h5>In {{item.productQuantity}}</h5>
+					<h5>
+						<button class="btn btn-warning"
+							ng-click="removeCart(item.productId, item.purchaseQty)">Delete</button>
+					</h5>
+					
+				</div>
+				<div>
+					<hr width="90%">
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>
