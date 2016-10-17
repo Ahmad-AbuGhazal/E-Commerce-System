@@ -3,11 +3,14 @@
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 
 /**
  * 
@@ -33,6 +36,16 @@ public class Vendor {
 	@Column(name="OWNER_NAME")
 	private String owner_name;
 	
+	private String email;
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	@OneToOne(cascade=CascadeType.ALL)
 	private Address address;
 	
@@ -45,6 +58,18 @@ public class Vendor {
 
 	public void setApprove(boolean approve) {
 		this.approve = approve;
+	}
+	  @Valid
+		@OneToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
+		@JoinColumn(name="USERCREDENTIAL")
+		UserCredantials userCredentials;
+	  
+	public UserCredantials getUserCredentials() {
+		return userCredentials;
+	}
+
+	public void setUserCredentials(UserCredantials userCredentials) {
+		this.userCredentials = userCredentials;
 	}
 
 	@OneToOne(cascade=CascadeType.ALL)

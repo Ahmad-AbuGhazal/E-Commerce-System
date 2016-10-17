@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-10">
+<h1> Profile</h1>
+    </div>
+
+</div>
+
+<div class="row">
+<div class="col-lg-1"></div>
+<div class="col-lg-2">
+
+ <ul class="nav nav-stacked">
+            <li><a ng-click="profilePageView()" target="ext"> Profile</a></li>
+            <li><a target="ext"> Products</a></li>
+            <li><a ng-click="addProductPageView()" target="ext"> add Product</a></li>
+           </ul>
+
+</div>
+
+<div class="col-lg-8">
+
+    <div vendor-profile-view ng-show="profilePageIndicator" ></div>
+    <div vendor-product-view ng-show="addProductPageIndicator" ></div>
+</div>
+<div class="col-lg-1"></div>
+
+</div>

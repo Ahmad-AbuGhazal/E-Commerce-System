@@ -1,0 +1,32 @@
+<form>
+ <div class="form-group">
+    <label for="productName">Product Name</label>
+    <input type="text" class="form-control" id="productName" aria-describedby="productHelp" ng-model="product.productName" placeholder="Product Name">
+    <small id="productHelp" class="form-text text-muted">We'll you can add product name.</small>
+  </div>
+<div class="form-group">
+    <label for="categories">Select Category</label>
+    <select  class="form-control" data-ng-model="product.category.id" data-ng-options="c.id as c.categoryName for c in categoriesList"></select>
+<div class="form-group">
+    <label for="exampleTextarea">Product Description</label>
+    <textarea class="form-control" id="productDescription" rows="3" ng-model="product.description" ></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="productPrice">Product Price</label>
+    <input type="number" class="form-control" id="productPrice" ng-model="product.productPrice" placeholder="Product Price">
+   </div>
+
+   <div class="form-group">
+    <label for="productQuantity">Product Quantity</label>
+    <input type="number" class="form-control" id="productQuantity" ng-model="product.productQuantity" placeholder="Product Quantity">
+    </div>
+
+  
+  <div class="form-group">
+    <label for="maxPerCustomer">Number/Cusomer</label>
+    <input type="number" class="form-control" id="maxPerCustomer" placeholder="Max Number/Customer ">
+  </div>
+    
+  <button type="submit" ng-click="addProduct()" class="btn btn-primary">add Product</button>
+</form>

@@ -9,4 +9,4 @@ public interface VendorService {
 	public ResponseInfo addVendor(Vendor vendor);
 	public Vendor searchVendor(Long id);
 	public List<Vendor> getVendors();
-}
+	}

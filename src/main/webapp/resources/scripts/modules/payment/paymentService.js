@@ -32,7 +32,7 @@ rapp.service('paymentService', ['$http', '$q', function ($http, $q) {
         return deferred.promise;
     };
 
-    this.detetePayment=function deletePayment(paymentId){
+    this.detetePayment=function deletePayment(customerId,paymentId){
    var deferred = $q.defer();
         // call http service to get all payments
         $http({

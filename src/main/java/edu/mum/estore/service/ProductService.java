@@ -12,4 +12,5 @@ public interface ProductService {
      Product get(long productId);
      boolean isAvailable(Product product,long quantity);
      Product update(Product product);
+     List<Product> findProductsByVendorId(long vendorId);
 }

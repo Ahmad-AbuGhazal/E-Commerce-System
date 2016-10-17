@@ -70,9 +70,11 @@ public class ProductController {
 
 		ResponseInfo info = new ResponseInfo();
 		if (result.hasErrors()) {
+			product.setApprove(false);
 			info.setResponse('N');
-
 		}
+		
+		product.setApprove(true);
 		productService.addProduct(product);
 		info.setResponse('Y');
 		return info;
@@ -91,5 +93,12 @@ public class ProductController {
 		}
 		return info;
 	}
+	
+	
+	@RequestMapping(value = "/vendors/{vendor_sn}/products", method = RequestMethod.GET)
+	public @ResponseBody List<Product> viewProducts(@PathVariable("vendor_sn") long vendorId){
+	return productService.findProductsByVendorId(vendorId);
+	}
+
 
 }

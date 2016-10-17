@@ -7,20 +7,22 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.mum.estore.domain.Customer;
 import edu.mum.estore.repository.CustomerRepository;
 import edu.mum.estore.service.CustomerService;
+
 @Service
 @Transactional
 public class CustomerServiceImpl implements CustomerService {
-  @Autowired
-  CustomerRepository customerRepository;
+	
+	@Autowired
+	CustomerRepository customerRepository;
+
 	@Override
 	public Customer get(long id) {
-		
 		return customerRepository.get(id);
 	}
+
 	@Override
-	public void update(Customer customer) {
-		// TODO Auto-generated method stub
-		
+	public void save(Customer customer) {
+		customerRepository.save(customer);
 	}
 
 }
