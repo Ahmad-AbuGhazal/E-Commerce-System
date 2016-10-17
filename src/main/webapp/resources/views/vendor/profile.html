@@ -11,9 +11,9 @@
 <div class="col-lg-2">
 
  <ul class="nav nav-stacked">
-            <li><a href="#" ng-click="profilePageView()" target="ext"> Profile</a></li>
-            <li><a href="#" target="ext"> Products</a></li>
-            <li><a  href="#" ng-click="addProductPageView()" target="ext"> add Product</a></li>
+            <li><a ng-click="profilePageView()" target="ext"> Profile</a></li>
+            <li><a target="ext"> Products</a></li>
+            <li><a ng-click="addProductPageView()" target="ext"> add Product</a></li>
            </ul>
 
 </div>
@@ -21,7 +21,7 @@
 <div class="col-lg-8">
 
     <div vendor-profile-view ng-show="profilePageIndicator" ></div>
-    <div add-product ng-show="addProductPageIndicator" ></div>
+    <div vendor-product-view ng-show="addProductPageIndicator" ></div>
 </div>
 <div class="col-lg-1"></div>
 

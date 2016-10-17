@@ -5,7 +5,19 @@ rapp.controller('vendorCtrl', ['$scope', '$q', '$location', '$http', 'vendorServ
 
     $scope.vendor = {};
     $scope.proucts = [];
-    $scope.product = {};
+    $scope.product = {
+        productName: '',
+        description: '',
+        productPrice: '',
+        productQuantity: '',
+        approve: 'false',
+        category: {
+            id: ''
+        },
+        vendor: {
+            vendor_sn: 1
+        }
+    };
     $scope.categoriesList = [];
     $scope.profilePageIndicator = true;
     $scope.addProductPageIndicator = false;
@@ -25,8 +37,10 @@ rapp.controller('vendorCtrl', ['$scope', '$q', '$location', '$http', 'vendorServ
     //get categories
     vendorService.getCategories()
         .then(function (res) {
-            console.log(res);
-            $scope.categoriesList = res.data.data.data;
+            console.log(res.data);
+            console.log(res.data.data);
+            console.log(res.data.data.data);
+            $scope.categoriesList = res.data.data;
         }, function (error) {
 
         });

@@ -91,7 +91,7 @@ public class ProductController {
 	
 	
 	@RequestMapping(value = "/vendors/{vendor_sn}/products", method = RequestMethod.GET)
-	public @ResponseBody List<Product> viewProducts(@PathVariable long vendorId){
+	public @ResponseBody List<Product> viewProducts(@PathVariable("vendor_sn") long vendorId){
 	return productService.findProductsByVendorId(vendorId);
 	}
 

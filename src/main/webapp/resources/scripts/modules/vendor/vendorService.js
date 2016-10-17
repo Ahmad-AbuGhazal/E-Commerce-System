@@ -35,7 +35,7 @@ rapp.service('vendorService', ['$http', '$q', function ($http, $q) {
         // call http service to get vendor infromation
         $http({
             method: 'POST',
-            url: '/estore/vendors/' + vendor_sn+'/products',
+            url: '/estore/products/add',
             data : product
         }).then(function (res) {
             deferred.resolve(res);

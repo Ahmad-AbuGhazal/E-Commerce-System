@@ -65,9 +65,8 @@ public class ProductRepositoryImpl implements ProductRepository {
 	@Override
 	public List<Product> findProductsByVendorId(long vendorId) {
 		try{
-		Query query = entityManager.createQuery(
-		"SELECT p from Product p WHERE p.vendor_VENDOR_SN=:vendorId");
-		List<Product> products = (List<Product>)query.setParameter("vendorId", vendorId).getResultList();
+		Query query = entityManager.createQuery("SELECT p from Product p WHERE p.vendor.vendor_sn=:vendor_sn");
+		List<Product> products = (List<Product>)query.setParameter("vendor_sn", vendorId).getResultList();
 		return products;
 		}catch(Exception ex){
 		throw new ProductNotFoundException("No product found under this vendor.");
