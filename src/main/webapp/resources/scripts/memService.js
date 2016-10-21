@@ -48,7 +48,6 @@ rapp.service('memService',['$q',function($q) {
 				break;
 			}
 		}
-		console.log(index);
 		if(index!=-1) {
 			this.cart.data.splice(index, 1);
 			this.setCart(this.cart);

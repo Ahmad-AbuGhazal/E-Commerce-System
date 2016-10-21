@@ -1,7 +1,10 @@
 package edu.mum.estore.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +26,12 @@ public class VendorController {
 	@ResponseBody
 	@ResponseStatus(value=HttpStatus.OK)
 	@RequestMapping(value="/vendor/add/", method=RequestMethod.POST, consumes="application/json")
-	public ResponseInfo addVendor(@RequestBody Vendor vendor) {
+	public ResponseInfo addVendor(@RequestBody @Valid Vendor vendor, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			ResponseInfo response = new ResponseInfo();
+			response.setResponse('N');
+			return response;
+		}
 		return vendorService.addVendor(vendor);
 	}
 	

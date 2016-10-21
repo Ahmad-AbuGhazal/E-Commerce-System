@@ -12,6 +12,8 @@ rapp.controller('cartCtrl', [ '$rootScope',
 
 			$scope.hideFirst = false;
 			$scope.selVals = [];
+			
+			$scope.total = 0;
 
 			$scope.productDetails = searchService.searchOne(cartService
 					.getProdId());
@@ -37,6 +39,14 @@ rapp.controller('cartCtrl', [ '$rootScope',
 				console.log($scope.cart);
 				cartService.checkout();
 			};
+			
+			$scope.$watch("cart", function(newVal, oldVal) {
+				$scope.total = 0;
+				for(var i=0;i<newVal.length;i++) {
+					var obj = newVal[i];
+					$scope.total += (parseInt(obj.productPrice) * parseInt(obj.purchaseQty));
+				}
+			});
 
 			function getCartx() {
 				$scope.cart = memService.getCart();

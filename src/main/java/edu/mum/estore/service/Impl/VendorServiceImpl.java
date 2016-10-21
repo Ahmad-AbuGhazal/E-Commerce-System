@@ -31,19 +31,13 @@ public class VendorServiceImpl implements VendorService {
 	@Override
 	public ResponseInfo addVendor(Vendor vendor) {
 		ResponseInfo responseInfo = new ResponseInfo();
-		if(checkROC(vendor) && verifyPayment(vendor)) {
-			/*RestTemplate restTemplate = remoteApi.getRestTemplate();
-			HttpEntity<Vendor> httpEntity = new HttpEntity<Vendor>(vendor, remoteApi.getHttpHeaders());
-			ResponseEntity<Vendor> response = restTemplate.exchange("http://localhost:8080/estore/addVendor", HttpMethod.POST, httpEntity, 
-										Vendor.class);*/
-			
-			vendorRepository.addVendor(vendor);
-			
+		//if(checkROC(vendor) && verifyPayment(vendor)) {			
+			vendorRepository.addVendor(vendor);			
 			responseInfo.setResponse('Y');
 			return responseInfo;
-		}
-		responseInfo.setResponse('N');
-		return responseInfo;
+		//}
+		//responseInfo.setResponse('N');
+		//return responseInfo;
 	}
 
 	@Override

@@ -41,10 +41,9 @@ app.controller('indexCtrl',['$scope','$location','$q','$http','searchService','m
     
     
     $scope.searchClick = function() {
-    	console.log('searchClick');
         searchService.search($scope.searchQuery, $scope.categoryName);
-        $location.path('/products/'+$scope.searchQuery);
         //route to search list page
+        $location.path('/products/'+$scope.searchQuery);        
     }
     
     $scope.login = function() {

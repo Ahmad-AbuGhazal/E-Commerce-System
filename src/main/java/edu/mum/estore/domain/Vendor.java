@@ -11,6 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * 
@@ -28,12 +32,20 @@ public class Vendor {
 	private long vendor_sn;
 	
 	@Column(name="VENDOR_ID")
+	@NotNull
+	@NotEmpty
 	private String vendor_id;
 	
 	@Column(name="VENDOR_NAME")
+	@NotNull
+	@NotEmpty
+	@Length(min=5)
 	private String vendor_name;
 	
 	@Column(name="OWNER_NAME")
+	@NotNull
+	@NotEmpty
+	@Length(min=5)
 	private String owner_name;
 	
 	private String email;
@@ -47,6 +59,7 @@ public class Vendor {
 	}
 
 	@OneToOne(cascade=CascadeType.ALL)
+	@Valid
 	private Address address;
 	
 	@Column(name = "approve", nullable = false, columnDefinition = "bit default 0")

@@ -5,11 +5,14 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.mum.estore.domain.Customer;
@@ -86,5 +89,19 @@ public class CustomerController {
 	public List<OrderDetails> getOrderDetails(@PathVariable("id") long customerId,
 			@PathVariable("orderId") long orderId) {
 		return orderService.getOrderDetails(orderId);
+	}
+	
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	@RequestMapping(value = "/customer/add", method=RequestMethod.POST, consumes="application/json")
+	public ResponseInfo addCustomer(@RequestBody @Valid Customer customer, BindingResult bindingResult) {
+		ResponseInfo response = new ResponseInfo();
+		if(bindingResult.hasErrors()) {			
+			response.setResponse('N');
+			return response;
+		}
+		customerService.save(customer);
+		response.setResponse('Y');
+		return response;
 	}
 }

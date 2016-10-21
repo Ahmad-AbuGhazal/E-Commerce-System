@@ -55,8 +55,8 @@
 						typeahead-template-url="searchTemplate1.html"
 						ng-keypress="searchEnter($event)"> <span
 						class="input-group-btn">
-						<button type="button" class="btn btn-default">
-							<span class="glyphicon glyphicon-search" ng-click="searchClick()"></span>
+						<button type="button" class="btn btn-default" ng-click="searchClick()">
+							<span class="glyphicon glyphicon-search"></span>
 							Search
 						</button>
 					</span>

@@ -27,7 +27,7 @@ public class VendorRepositoryImpl implements VendorRepository {
 	
 	@Override
 	public List<Vendor> getVendors() {
-		return null;
+		return entityManager.createQuery("SELECT v FROM Vendor v", Vendor.class).getResultList();
 	}
 
 }

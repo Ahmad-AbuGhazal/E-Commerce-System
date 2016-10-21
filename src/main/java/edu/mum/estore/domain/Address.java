@@ -3,6 +3,10 @@ package edu.mum.estore.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Address {
@@ -11,9 +15,22 @@ public class Address {
 	@GeneratedValue
 	private long id;
 
+	@NotNull
+	@NotEmpty
+	@Length(min=8, max=30)
 	private String street;
+	@NotNull
+	@NotEmpty
+	@Length(min=3, max=30)
 	private String city;
+	@NotNull
+	@NotEmpty
+	@Length(min=2, max=30)
 	private String state;
+	
+	@NotNull
+	@NotEmpty
+	@Length(min=5, max=5)
 	private String zipcode;
 
 	public String getStreet() {

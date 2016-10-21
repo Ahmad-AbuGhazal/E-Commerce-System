@@ -67,3 +67,8 @@ text-indent: -9999px;
   .carousel-control {
   width:5%;
   }
+  
+  .disable-tab {
+  cursor: not-allowed;
+  pointer-events: none;
+  }
