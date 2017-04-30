@@ -1,6 +1,6 @@
-# Ecommerce Store System: 
+# Ecommerce System: 
 Developed web based application in distributed environment, it allows vendors,to register in the system and sell products, 
-allows a customer to register/login and buys products, Integrated with ROC external System and Payment Gateway Module. 
+allows a customer to register/login and buys products, Integrated with companies registration system (CRS) and payment gatway.
 
 Created Project Scope, Project Charter and Functional Requirements, Wrote & Manage WBS, Manage Team & Tasks, developed controllers, 
 entity classes,web services, XML configuration.
